@@ -12,8 +12,8 @@
    <p>Знайти суму, добуток та частку двох дійсних чисел. Результат вивести у формі таблиці </p>
    <script>
       "use strict"
-      let firstNum = parseInt(prompt(`Введіть перше число`))
-      let secondNum = parseInt(prompt(`Введіть друге число`))
+      let firstNum = parseFloat(prompt(`Введіть перше число`))
+      let secondNum = parseFloat(prompt(`Введіть друге число`))
       let sumRez = firstNum + secondNum
       let multiplicationRez = firstNum * secondNum
       let divisionRez = firstNum / secondNum
@@ -31,7 +31,9 @@
          </tr>
       </tbody>
    </table>
-   <style>
+  `)
+   </script>
+    <style>
       table{
          border-collapse: collapse; 
          border: 1px solid black;
@@ -47,8 +49,7 @@
          border: 1px solid black;
          text-align: center;
       }
-   </style>`)
-   </script>
+   </style>
 </body>
 
 </html>
