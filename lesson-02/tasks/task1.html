@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Рішення задачі №1</title>
+</head>
+
+<body>
+   <h1>Рішення задачі №1</h1>
+   <p>Знайти суму, добуток та частку двох дійсних чисел. Результат вивести у формі таблиці </p>
+   <script>
+      "use strict"
+      let firstNum = parseInt(prompt(`Введіть перше число`))
+      let secondNum = parseInt(prompt(`Введіть друге число`))
+      let sumRez = firstNum + secondNum
+      let multiplicationRez = firstNum * secondNum
+      let divisionRez = firstNum / secondNum
+      document.write(`<table>
+      <tbody>
+         <tr>
+            <th>Сума <br> a + b</th>
+            <th>Добуток <br> a * b</th>
+            <th>Частка <br> a / b</th>
+          </tr>
+         <tr>
+            <td>${firstNum} + ${secondNum} = ${sumRez}</td>
+            <td>${firstNum} * ${secondNum} = ${multiplicationRez}</td>
+            <td>${firstNum} / ${secondNum} = ${divisionRez}</td>
+         </tr>
+      </tbody>
+   </table>
+   <style>
+      table{
+         border-collapse: collapse; 
+         border: 1px solid black;
+
+      }
+      th{
+         padding: 10px;
+         border: 1px solid black;
+         min-width: 200px;
+      }
+      td{
+         padding: 10px;
+         border: 1px solid black;
+         text-align: center;
+      }
+   </style>`)
+   </script>
+</body>
+
+</html>
