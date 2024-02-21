@@ -17,7 +17,8 @@
          let totalPrice = productPrice * productQuantity
          let salesTax = 5
          let rezSalesTax = totalPrice / 100 * salesTax
-         document.write(`Загальна вартіть сладає: ${totalPrice} <br> Сума <b>ПДВ</b> від загальної вартості: ${rezSalesTax}`)
+         let totalPriceWithTax = totalPrice + rezSalesTax
+         document.write(`Вартіть товару сладає: ${totalPrice} <br> Сума <b>ПДВ</b> від загальної вартості: ${rezSalesTax} <br> Загальна вартість с ПДВ ${totalPriceWithTax}`)
       </script>
    </body>
 
