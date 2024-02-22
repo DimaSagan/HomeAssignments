@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Рішення задачі №3</title>
-   </head>
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Рішення задачі №3</title>
+</head>
 
-   <body>
-      <h1>Рішення задачі №3</h1>
-      <p>Дано вартість одиниці товару і кількість. Знайти загальну вартість та ПДВ (5% від загальної вартості). </p>
-      <script>
-         "use strict"
-         let productPrice = parseFloat(prompt(`Введіть вартість товару`))
-         let productQuantity = parseFloat(prompt(`Введіть кількість товару`))
-         let totalPrice = productPrice * productQuantity
-         let salesTax = 5
-         let rezSalesTax = totalPrice / 100 * salesTax
-         let totalPriceWithTax = totalPrice + rezSalesTax
-         document.write(`Вартіть товару сладає: ${totalPrice} <br> Сума <b>ПДВ</b> від загальної вартості: ${rezSalesTax} <br> Загальна вартість с ПДВ ${totalPriceWithTax}`)
-      </script>
-   </body>
+<body>
+   <h1>Рішення задачі №3</h1>
+   <p>Дано вартість одиниці товару і кількість. Знайти загальну вартість та ПДВ (5% від загальної вартості). </p>
+   <script>
+      "use strict"
+      let productPrice = parseFloat(prompt(`Введіть вартість товару`))
+      let productQuantity = parseFloat(prompt(`Введіть кількість товару`))
+      let totalPrice = productPrice * productQuantity
+      let salesTax = 5
+      let rezSalesTax = totalPrice / 100 * salesTax
+      let totalPriceWithTax = totalPrice + rezSalesTax
+      document.write(`Вартіть товару сладає: ${totalPrice} <br> Сума <b>ПДВ</b> від загальної вартості: ${rezSalesTax} <br> Загальна вартість с ПДВ ${totalPriceWithTax}`)
+   </script>
+</body>
 
 </html>
