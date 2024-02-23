@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Рішення задачі №0</title>
+</head>
+
+<body>
+    <h1>Рішення задачі №1</h1>
+    <p>Дано ширину екрана та кількість елементів, які повинні бути відображені у рядку. Визначити ширину елементів, які повинні бути відображені у
+        цьому рядку. </p>
+    <script>
+        "use strict"
+        let maxWidth = parseInt(prompt(`Введіть ширину контейнеру:`))
+        let items = parseInt(prompt(`Введіть кількість об'єктів:`))
+        let gapPronpt = parseInt(prompt(`Введіть розмір відступу:`))
+        let gap = Math.max(items - 1, 0) * gapPronpt
+        let itemsWidth = (maxWidth - gap) / Math.max(items, 1)
+        document.write(`Ширина об'єктів складає ${itemsWidth}рх, з урахуванням відступу між ними у ${gap}рх`)
+    </script>
+</body>
+
+</html>
