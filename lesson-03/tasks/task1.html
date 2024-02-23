@@ -9,13 +9,31 @@
 
 <body>
    <h1>Рішення задачі №1</h1>
-   <p>test</p>
+   <p>
+      З клавіатури вводяться імена двох дітей та кількість у них цукерок. Вивести не екран ім’я тієї дитини, у якої кількість цукерок є більшою, або
+      вивести, що кількість однакова.
+   </p>
    <script>
-      
-      
-   
+      "use strict"
+      const firstChildName = prompt("Введіть ім'я першої дитини", "Ваня")
+      const candyQuantityFirstChild = parseFloat(prompt("Введіть кількість цукерок першої дитини", 5))
+
+      const secondChildName = prompt("Введіть ім'я другої дитини", "Даша")
+      const candyQuantitySecondChild = parseFloat(prompt("Введіть кількість цукерок другої дитини", 6))
+      let result
+      if(!isNaN(firstChildName) || firstChildName == "" && !isNaN(secondChildName) || secondChildName == "") result = "Некоректне ім'я!"
+      else if (isNaN(candyQuantityFirstChild) || isNaN(candyQuantitySecondChild)) result = "Некоректна кількість конфет!"
+      else if (candyQuantityFirstChild === candyQuantitySecondChild) result = `Кількість цукерок ${firstChildName}, та ${secondChildName} є рівною. Всі задоволені`
+      else if (candyQuantityFirstChild > candyQuantitySecondChild) result = `Кількість цукерок у ${firstChildName} більша. ${secondChildName} сумує.`
+      else if (candyQuantityFirstChild < candyQuantitySecondChild) result = `Кількість цукерок у ${secondChildName} більша. ${firstChildName} сумує.`
+      console.log(firstChildName)
+      console.log(typeof firstChildName)
+      document.write(result)
+    
+
+
    </script>
-  
+
 </body>
 
 </html>
