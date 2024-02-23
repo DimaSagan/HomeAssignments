@@ -9,12 +9,23 @@
 
 <body>
    <h1>Рішення задачі №2</h1>
-   <p>Дано рік народження (дата: 1 січня) та поточний рік. Знайти кількість років. </p>
+   <p>
+      З клавіатури вводиться ціна товару і кількість грошей. Якщо грошей не вистачає то відмовляємо у покупці, інакше, якщо ще залишаються гроші, то
+      пропонуємо купити лотерею за 4 грн.
+   </p>
    <script>
       "use strict"
-      let yearOfBirth = prompt(`Введіть рік народження`)
-      let age = 2024 - yearOfBirth
-      document.write(`Вам  ${age}`)
+      const productPrice = parseFloat(prompt("Введіть вартість товару", "0"))
+      const moneyValue = parseFloat(prompt("Введіть кількість грошей", "0"))
+      let moneyResidue = moneyValue - productPrice
+      let result
+      if (isNaN(productPrice) || isNaN(moneyValue)) result = "Ви ввели не коректні данні"
+      else if (productPrice === moneyValue) result = "Ви дали сумму без решти"
+      else if (productPrice > moneyValue) result = "Ви дали недостатньо грошей"
+      else if (moneyResidue >= 4) result = "Ви ще можете придбати лотерею за 4 грн"
+      else if (moneyResidue < 4) result = `Ваша решта ${moneyResidue.toFixed(2)}`
+      document.write(result)
+      
    </script>
 </body>
 
