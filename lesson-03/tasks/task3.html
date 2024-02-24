@@ -12,7 +12,22 @@
    <p>Випадковим чином генерується число від 1 до 5. Спробуйте вгадати число за 2 спроби.</p>
    <script>
       "use strict"
-      
+      let userNumber = parseInt(prompt("Спробуйте відгадати число від 1 до 5.\n Введить свій варіант:"))
+      const minNumberValue = 1
+      const maxNumberValue = 5
+      let scriptNumber = minNumberValue + Math.floor(Math.random() * (maxNumberValue - minNumberValue + 1))
+      let result
+      if (isNaN(userNumber)) result = "Введіть число від 1 до 5."
+      else if (scriptNumber === userNumber) result = `Ви вгадали с першої спроби! <br> Загадане число ${scriptNumber} , ваша відповідь ${userNumber}`
+      else {
+         userNumber = parseInt(prompt("Ви не вгадали с першої спроби. Спробуйте ще раз!"))
+         if (isNaN(userNumber)) result = "Введіть число від 1 до 5."
+         else if (scriptNumber === userNumber) result = `Ви вгадали с другої спроби! <br> Загадане число ${scriptNumber} , ваша відповідь ${userNumber}`
+         else result = `Ваші спроби вичерпано <a href="task3.html"> Спробувати ще раз</a>`
+      }
+      document.write(result)
+      console.log(userNumber)
+      console.log(scriptNumber)
    </script>
 </body>
 

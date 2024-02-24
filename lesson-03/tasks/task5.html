@@ -15,7 +15,22 @@
    </p>
    <script>
       "use strict"
-
+      const driverCategory = prompt("Введыть категорію водія, латинськими літерами", "A")
+      let result
+      if (!isNaN(driverCategory) || driverCategory !== "A" || driverCategory !== "B" || driverCategory !== "C")
+         result = "Такої категорії не існує"
+      switch (driverCategory) {
+         case "A":
+            result = "Мотоцикл"
+            break
+         case "B":
+            result = "Легковий автомобіль"
+            break
+         case "C":
+            result = "Вантажний автомобіль"
+            break
+      }
+      document.write(result)
    </script>
 </body>
 

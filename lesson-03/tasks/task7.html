@@ -14,7 +14,29 @@
    </p>
    <script>
       "use strict"
-      
+      const monthNumber = parseInt(prompt("Введіть номер місяця"))
+      let result
+      if (isNaN(monthNumber)) result = "Такого номера не існує"
+      else if(monthNumber>12) result = "Ми саємо лише 12 місяців"
+      switch(monthNumber){
+         case 1:
+         case 2:
+         case 12: result = "Це зима"
+         break
+         case 3:
+         case 4:
+         case 5: result = "Це весна"
+         break
+         case 6:
+         case 7:
+         case 8: result = "Це літо"
+         break
+         case 9:
+         case 10:
+         case 11: result = "Це осінь"
+         break
+      }
+      document.write(result)
    </script>
    
 </body>

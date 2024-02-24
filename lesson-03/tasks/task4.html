@@ -14,8 +14,16 @@
    </p>
    <script>
       "use strict"
-
-      
+      let age = parseInt(prompt("Введіть вік людини"))
+      let result
+      if (isNaN(age)) result = "Ви ввели не коректні данні"
+      else if (age <= 5) result = `${age} років, це дитина у садочку`
+      else if (age <= 17) result = `${age} років, це школяр`
+      else if (age <= 22) result = `${age} років, це студент`
+      else if (age <= 64) result = `${age} років, це працівник`
+      else if (age >= 65) result = `${age} років, це пенсіонер`
+      else result = "помилка"
+      document.write(result)
    </script>
 </body>
 

@@ -21,7 +21,7 @@
       const secondChildName = prompt("Введіть ім'я другої дитини", "Даша")
       const candyQuantitySecondChild = parseFloat(prompt("Введіть кількість цукерок другої дитини", 6))
       let result
-      if(!isNaN(firstChildName) || firstChildName == "" && !isNaN(secondChildName) || secondChildName == "") result = "Некоректне ім'я!"
+      if (!isNaN(firstChildName) || firstChildName == "" && !isNaN(secondChildName) || secondChildName == "") result = "Некоректне ім'я!"
       else if (isNaN(candyQuantityFirstChild) || isNaN(candyQuantitySecondChild)) result = "Некоректна кількість конфет!"
       else if (candyQuantityFirstChild === candyQuantitySecondChild) result = `Кількість цукерок ${firstChildName}, та ${secondChildName} є рівною. Всі задоволені`
       else if (candyQuantityFirstChild > candyQuantitySecondChild) result = `Кількість цукерок у ${firstChildName} більша. ${secondChildName} сумує.`
