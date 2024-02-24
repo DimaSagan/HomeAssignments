@@ -18,11 +18,11 @@
       let scriptNumber = minNumberValue + Math.floor(Math.random() * (maxNumberValue - minNumberValue + 1))
       let result
       if (isNaN(userNumber)) result = "Введіть число від 1 до 5."
-      else if (scriptNumber === userNumber) result = `Ви вгадали с першої спроби! <br> Загадане число ${scriptNumber} , ваша відповідь ${userNumber} <br <a href="task3.html"> Спробувати ще раз</a>>`
+      else if (scriptNumber === userNumber) result = `Ви вгадали с першої спроби! <br> Загадане число ${scriptNumber} , ваша відповідь ${userNumber} <br> <a href="task3.html"> Спробувати ще раз</a>`
       else {
          userNumber = parseInt(prompt("Ви не вгадали с першої спроби. Спробуйте ще раз!"))
          if (isNaN(userNumber)) result = "Введіть число від 1 до 5."
-         else if (scriptNumber === userNumber) result = `Ви вгадали с другої спроби! <br> Загадане число ${scriptNumber} , ваша відповідь ${userNumber} <br <a href="task3.html"> Спробувати ще раз</a>>`
+         else if (scriptNumber === userNumber) result = `Ви вгадали с другої спроби! <br> Загадане число ${scriptNumber} , ваша відповідь ${userNumber} <br> <a href="task3.html"> Спробувати ще раз</a>`
          else result = `Ваші спроби вичерпано <a href="task3.html"> Спробувати ще раз</a>`
       }
       document.write(result)
