@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Рішення задачі №11</title>
+</head>
+<style>
+   p {
+      max-width: 600px;
+      text-indent: 10px;
+   }
+</style>
+
+<body>
+   <h1>Рішення задачі №11</h1>
+   <p>
+      Користувач загадує число. За 3 спроби комп’ютер намагається вгадати число користувача (використати confirm).
+   </p>
+   <script>
+      "use strict"
+      for (let computerNumber = 0; computerNumber < 3; computerNumber++) {
+         let randomNumber = 0 + Math.floor(Math.random() * 1000)
+         let result = confirm(`Це ${randomNumber}`)
+         if (result == true) {
+            document.write("Машина перемогла людину!")
+            break
+         }
+      }
+      document.write(`<br><a href="task11.html">Спробувати ще</a>`)
+   </script>
+
+</body>
+
+</html>

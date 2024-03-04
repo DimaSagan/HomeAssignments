@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Рішення задачі №14</title>
+</head>
+<style>
+   p {
+      max-width: 600px;
+      text-indent: 10px;
+   }
+</style>
+
+<body>
+   <h1>Рішення задачі №14</h1>
+   <p>
+      Знайти суму 5 непарних чисел, що знаходяться між заданими користувачем числами.
+   </p>
+   <script>
+      "use strict"
+      const minNumberValue = parseFloat(prompt("min value"))
+      const maxNumberValue = parseFloat(prompt("max value"))
+      let sumOddNumber = 0
+      for (let numbers = minNumberValue; numbers <= maxNumberValue; numbers++) {
+         if (numbers % 2)
+            sumOddNumber += numbers
+      }
+      document.write(`Сумма непарних чисел становить: ${sumOddNumber}`)
+
+   </script>
+
+</body>
+
+</html>

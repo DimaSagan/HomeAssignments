@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Рішення задачі №8</title>
+</head>
+
+<body>
+   <h1>Рішення задачі №8</h1>
+   <p>
+      Вивести таблицю з 3 рядків і 3 стовпців нумерацією починаючи з одного. 
+   </p>
+   <script>
+      "use strict"
+      const tableCollumQuantity = 3
+      const tableRowQuantity = 3
+      let boxNumber = 1
+      document.write(`<table style="border: 2px solid black;">`)
+
+      for (let tableRow = 1; tableRow <= 3; tableRow++) {
+         document.write(`<tr>`)
+         for (let tableCollum = 1; tableCollum <= tableCollumQuantity; tableCollum++) {
+            document.write(`<td style="border: 2px solid black; padding: 5px;">${boxNumber}</td>`)
+            boxNumber++
+         }
+         document.write(`</tr>`)
+         
+      }
+      document.write(`</table>`)
+
+   </script>
+
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Рішення задачі №10</title>
+</head>
+<style>
+   p {
+      max-width: 600px;
+      text-indent: 10px;
+   }
+</style>
+
+<body>
+   <h1>Рішення задачі №10</h1>
+   <p>
+      Вивести на екран N абзаців (N вводиться користувачем)
+   </p>
+   <script>
+      "use strict"
+      const paragraphQuantity = parseInt(prompt("Введіть кількість параграфів", "5"))
+      for (let paragraph = 1; paragraph <= paragraphQuantity; paragraph++) {
+         document.write(`<p>Параграф № ${paragraph}</p>`)
+      }
+   </script>
+   
+</body>
+
+</html>
