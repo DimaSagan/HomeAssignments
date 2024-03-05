@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Рішення задачі №15</title>
+</head>
+
+<body>
+    <h1>Рішення задачі №15</h1>
+    <p>
+        ЗІгровий автомат. Випадково вибираємо зображення у 3 позиціях. Вибір у кожній позиції вибирається як одне з чотирьох зображень.
+        Вивести ці зображення і повідомити виграш користувача (три перших зображення 100 грн, три других – 200, три третіх – 500, три четвертих
+        зображення –1000грн). Використати цикли і switch (для вибору зображення за номером).
+    </p>
+    <script>
+        "use strict"
+        let imageCombination = ""
+        const minNumber = 1, maxNumber = 4
+        for (let number = 0; number < 3; number++) {
+            let randomNumber = minNumber + Math.floor(Math.random() * maxNumber)
+            switch (randomNumber) {
+                case 1:
+                    document.write('<img src="img/apple.png" alt="apple">')
+                    imageCombination += "apple"
+                    break
+                case 2:
+                    document.write('<img src="img/grape.png" alt="grape">')
+                    imageCombination += "grape"
+                    break
+                case 3:
+                    document.write('<img src="img/peach.png" alt="peach">')
+                    imageCombination += "peach"
+                    break
+                case 4:
+                    document.write('<img src="img/watermelon.png" alt="watermelon">')
+                    imageCombination += "watermelon"
+                    break
+            }
+        }
+        switch (imageCombination) {
+            case "appleappleapple":
+                document.write("<br>Вітаю ви вийграли 100грн")
+                break
+            case "grapegrapegrape":
+                document.write("<br>Вітаю ви вийграли 200 грн")
+                break
+            case "peachpeachpeach":
+                document.write("<br>Вітаю ви вийграли 300 грн")
+                break
+            case "watermelonwatermelonwatermelon":
+                document.write("<br>Вітаю ви вийграли 1000 грн")
+                break
+        }
+        document.write('<br><a href="task15.html">Зіграти ще</a>')
+    </script>
+
+</body>
+
+</html>
