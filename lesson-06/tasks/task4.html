@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Рішення задачі №4</title>
+</head>
+
+<body>
+   <h1>Рішення задачі №4</h1>
+   <p>
+      Відобразити трикутник за допомогою символів «о».
+   </p>
+   <script>
+      "use strict"
+      const rows = 7
+      for (let syblos = 0; syblos < rows; syblos++) {
+         let symbol = syblos
+         let symbolO = ""
+         for(let o = 0; o < syblos; o++){
+            symbolO += "o"
+         }
+         document.write(`<br>${symbolO}`)
+      }
+
+      for(let syblos= 1; syblos<rows; syblos++){
+         let symbol = syblos
+         let spaces = rows - syblos
+          let symbolO=''
+         for (let s=0; s<spaces; s++){
+            symbolO +='.'
+         }
+         for( let o=0; o<syblos; o++){
+            symbolO +='o'
+         }
+         document.write(`<br>${symbolO}`)
+      }
+   </script>
+</body>
+
+</html>

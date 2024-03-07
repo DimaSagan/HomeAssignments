@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Рішення задачі №1</title>
+</head>
+
+<body>
+   <h1>Рішення задачі №1</h1>
+   <p>
+      Інвестор вклав  тис. грн на 20 років під 20% річних. Визначити за допомогою циклів суму, яку він одержить (без оподаткування).
+   </p>
+   <script>
+      "use strict"
+      let investorDeposit = parseFloat(prompt("Сума вкладу"))
+      const annualPersentage = 0.2
+      const depositPeriod = 20
+      let investorProfit = 0
+
+      for(let year = 0; year< depositPeriod; year++){
+         let profitAccrual = investorDeposit * annualPersentage
+         investorProfit += profitAccrual
+      }
+      document.write(`При сумі інвестицій ${investorDeposit} грн, Ваш прибуток складатиме ${investorProfit} грн`)
+   </script>
+
+</body>
+
+</html>
