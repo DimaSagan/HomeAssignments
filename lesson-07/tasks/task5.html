@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Рішення задачі №5</title>
+</head>
+
+<body>
+   <h1>Рішення задачі №5</h1>
+   <p>
+      Створити функцію, яка для 3 заданих чисел знаходить одночасно декілька результатів: кількість парних, кількість додатних, кількість більших за
+      100.
+   </p>
+   <script>
+      "use strict"
+      function multitaskFunc() {
+         let evenResult = 0
+         let positiveResultu = 0
+         let moreHundredResult = 0
+         for (let count = 1; count <= 3; count++) {
+            let number = parseFloat(prompt(`Введіть ${count} число:`, "4"))
+            if (number % 2 === 0) evenResult += 1
+            if (number > 0) positiveResultu += 1
+            if (number > 100) moreHundredResult += 1
+         }
+         return `Кількість парних: ${evenResult} <br> Кількість додатних: ${positiveResultu}<br> Кількість більших за 100: ${moreHundredResult} `
+      }
+      let result = multitaskFunc()
+      document.write(`${result}`)
+   </script>
+</body>
+
+</html>

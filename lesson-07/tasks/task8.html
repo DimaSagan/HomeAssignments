@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Рішення задачі №8</title>
+   <style>
+      img {
+         width: 50%;
+         display: block;
+         margin: 0 auto;
+      }
+   </style>
+</head>
+
+<body>
+   <h1>Рішення задачі №8</h1>
+   <p>
+      Створити функцію, яка випадковим чином виводить на екран одне із 4 зображень (шляхи до зображень передаються у функцію)
+   </p>
+
+   <script>
+      "use strict"
+      function getRandomImage() {
+         let randomImg = 1 + Math.floor(Math.random() * 4)
+         document.write(`<img src="img/${randomImg}.webp" alt="image">`)
+      }
+      let result = getRandomImage()
+   </script>
+
+</body>
+
+</html>
