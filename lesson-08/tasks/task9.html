@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Рішення задачі №9</title>
+   <style>
+      img {
+         width: 30%;
+         display: block;
+         margin: 0 auto;
+      }
+      h2{
+         text-align: center;
+      }
+   </style>
+</head>
+
+<body>
+   <h1>Рішення задачі №9</h1>
+   <p>
+      Створити функцію, яка виводить банер (у функцію передаються: зображення, заголовок та посилання, куди переходимо при кліку на зображення)
+   </p>
+
+   <script>
+      "use strict"
+      function getRandomImage(title, link, numberImg) {
+         document.write(`<h2>${title}</h2>`)
+         document.write(`<a href="${link}" target="_blank"><img src="${numberImg}" alt="image"></a>`)
+      }
+      let titleValue = prompt("Введіть заголовок", "Найпоширеніший пошуковик")
+      let linkValuue = prompt("Введіть посилання на ресурс", "https://www.google.com")
+      let imageValue = prompt("Введіть посилання на зображення", "https://images.unsplash.com/photo-1607662314436-fae8c0794974?q=80&w=3293&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
+      
+      let result = getRandomImage(titleValue, linkValuue, imageValue)
+   </script>
+
+</body>
+
+</html>
