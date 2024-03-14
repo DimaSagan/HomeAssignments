@@ -10,92 +10,52 @@
 <body>
    <h1>Рішення задачі №4</h1>
    <p>
-      Створити окремі функції, які для 4 чисел знаходять:
+      Дано послідовність номерів автомобілів. Підрахувати кількість номерів, які :
    </p>
    <ol>
-      <li>суму;</li>
-      <li>добуток;</li>
-      <li>середнє арифметичне;</li>
-      <li>мінімальне значення.</li>
+      <li>починаються на букву «А»;</li>
+      <li>перша і остання літери співпадають;</li>
+      <li>складаються з більше ніш 5 символів;</li>
    </ol>
    <script>
       "use strict"
-      function getSum(a, b, c, d) {
-         let result = a + b + c + d
-         return result
+      function numberBeginA(numbers) {
+         let numberA = 0
+         // console.log(numbers[3][0][1])
+         for (let a = 0; a < numbers.length; a++) {
+            if (numbers[a][0][0] == "А") numberA += 1
+         }
+         return numberA
       }
-      function getMultiply(a, b, c, d) {
-         let result = a * b * c * d
-         return result
+      function firstLatterMatchLastLetter(numbers) {
+         let maches = 0
+         for (let m = 0; m < numbers.length; m++) {
+            let number = numbers[m][0]
+            let numberLength = number.length
+            let numberFirstLatter = number[0]
+            let numberLastLatter = number[numberLength - 1]
+            if (numberFirstLatter == numberLastLatter) maches += 1
+         }
+         return maches
       }
-      function getArithmeticMean(a, b, c, d) {
-         let result = (a + b + c + d) / 4
-         return result
+      function numberMoreThanSixSymbol(numbers) {
+         let moreThanSix = 0
+         for (let s = 0; s < numbers.length; s++) {
+            let numberLength = numbers[s][0].length
+            if (numberLength > 5) moreThanSix += 1
+         }
+         return moreThanSix
       }
-      function getMinValue(a, b, c, d) {
-         let minValue = a
-         if (b < minValue) minValue = b
-         if (c < minValue) minValue = c
-         if (d < minValue) minValue = d
-         return minValue
-      }
+      let transportNumber = [["АА12УА"], ["АА1712УФ"], ["АХ44Р"], ["НС2834ЖН"], ["ВО5533ЛК"]]
 
-      const firstUserNumber = parseFloat(prompt("Введіть перше число", "4"))
-      const secondtUserNumber = parseFloat(prompt("Введіть друге число", "5"))
-      const thirdUserNumber = parseFloat(prompt("Введіть трете число", "6"))
-      const fourthtUserNumber = parseFloat(prompt("Введіть четверте число", "7"))
+      let numberBeginAResult = numberBeginA(transportNumber)
+      let firstLatterMatchLastLetterResult = firstLatterMatchLastLetter(transportNumber)
+      let numberMoreThanSixSymbolResult = numberMoreThanSixSymbol(transportNumber)
 
-      let sumResult = getSum(firstUserNumber, secondtUserNumber, thirdUserNumber, fourthtUserNumber)
-      let multiplyResult = getMultiply(firstUserNumber, secondtUserNumber, thirdUserNumber, fourthtUserNumber)
-      let arithmeticMeanResult = getArithmeticMean(firstUserNumber, secondtUserNumber, thirdUserNumber, fourthtUserNumber)
-      let minValueResult = getMinValue(firstUserNumber, secondtUserNumber, thirdUserNumber, fourthtUserNumber)
-
-      document.write(`Сума: ${sumResult} Добуток: ${multiplyResult} Середнє арифметичне: ${arithmeticMeanResult} Мінімальне значення: ${minValueResult}`)
-      
-      // function getSum(numberCount) {
-      //    let result = 0
-      //    for (let sum = 0; sum < numberCount; sum++) {
-      //       const userNumber = parseFloat(prompt("Введіть перше число", "4"))
-      //       result +=userNumber
-      //    }
-      //    return result
-      // }
-
-      // function getMultiply(numberCount) {
-      //    let result = 1
-      //    for (let multiply = 0; multiply < numberCount; multiply++) {
-      //       const userNumber = parseFloat(prompt("Введіть перше число", "4"))
-      //       result *=userNumber
-      //    }
-      //    return result
-      // }
-
-      // function getArithmeticMean(numberCount) {
-      //    let result = 0
-      //    for (let arithmeticMean = 0; arithmeticMean < numberCount; arithmeticMean++) {
-      //       const userNumber = parseFloat(prompt("Введіть перше число", "4"))
-      //       result +=userNumber
-      //    }
-      //    return result / numberCount
-      // }
-      // function getMinValue(numberCount) {
-      //    let result = +Infinity
-      //    for (let minValue = 0; minValue < numberCount; minValue++) {
-      //       const userNumber = parseFloat(prompt("Введіть перше число", "4"))
-      //       if(userNumber<result) result=userNumber
-      //    }
-      //    return result
-      // }
-
-      // const numberQuantity = 4
-
-      // let sumResult = getSum(numberQuantity)
-      // let multiplyResult = getMultiply(numberQuantity)
-      // let arithmeticMeanResult = getArithmeticMean(numberQuantity)
-      // let minValueResult = getMinValue(numberQuantity)
-
-      // document.write(`Сума: ${sumResult} Добуток: ${multiplyResult} Середнє арифметичне: ${arithmeticMeanResult} Мінімальне значення: ${minValueResult}`)
-  </script>
+      document.write(`Кількість номерів які починаються на букву «А»: <b>${numberBeginAResult}</b> `)
+      document.write(`<br>Кількість номерів у фких перша і остання літери співпадають: <b>${firstLatterMatchLastLetterResult}</b>`)
+      document.write(`<br>Кількість номерів які складаються з більше ніш 5 символів: <b>${numberMoreThanSixSymbolResult}</b>`)
+   </script>
 </body>
 
 </html>

@@ -10,19 +10,17 @@
 <body>
    <h1>Рішення задачі №3</h1>
    <p>
-      Створити функцію, яка за номером дня дозволяє з’ясувати чи є цей день робочим.
+      Дано масив імен учнів. З’ясувати скільки разів зустрічається ім’я «Іван».
    </p>
    <script>
       "use strict"
-      function getDayType(dayNumber) {
-         if (dayNumber <= 5) dayNumber = "Робочий день"
-         else dayNumber = "Вихідний день"
-         return dayNumber
+      let pupilsNames = ["Даніл","Іван", "Даша", "Дмитро", "Іван", "Євген" ]
+      let ivan = 0
+      for (let nameSearch = 0; nameSearch < pupilsNames.length; nameSearch++) {
+         if(pupilsNames[nameSearch] === "Іван")
+         ivan +=1
       }
-
-      let dayInput = parseInt(prompt("Введіть номер дня"))
-      let dayResult = getDayType(dayInput)
-      document.write(`${dayResult}`)
+      document.write(`Ім’я Іван зустрічається: ${ivan} разів.`)
    </script>
 </body>
 

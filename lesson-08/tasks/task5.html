@@ -10,25 +10,45 @@
 <body>
    <h1>Рішення задачі №5</h1>
    <p>
-      Створити функцію, яка для 3 заданих чисел знаходить одночасно декілька результатів: кількість парних, кількість додатних, кількість більших за
-      100.
+      Дано послідовність оцінок учня. Підрахувати кількість:
+   <ul>
+      <li>двійок;</li>
+      <li>кількість хороших оцінок (добре, відмінно);</li>
+      <li>кількість оцінок, які нижче середнього.</li>
+   </ul>
    </p>
    <script>
       "use strict"
-      function multitaskFunc() {
-         let evenResult = 0
-         let positiveResultu = 0
-         let moreHundredResult = 0
-         for (let count = 1; count <= 3; count++) {
-            let number = parseFloat(prompt(`Введіть ${count} число:`, "4"))
-            if (number % 2 === 0) evenResult += 1
-            if (number > 0) positiveResultu += 1
-            if (number > 100) moreHundredResult += 1
+      function countingGradeF (grade) {
+         let gradeF = 0
+         for (let f = 0; f < grade.length; f++) {
+            if(grade[f]===2) gradeF +=1
          }
-         return `Кількість парних: ${evenResult} <br> Кількість додатних: ${positiveResultu}<br> Кількість більших за 100: ${moreHundredResult} `
+         return gradeF
       }
-      let result = multitaskFunc()
-      document.write(`${result}`)
+      function countingGoodGrade (grade){
+         let goodGrade = 0 
+         for (let g = 0; g < grade.length; g++) {
+            if(grade[g]>=4) goodGrade +=1
+         }
+         return goodGrade
+      }
+      function countingUnderAverageGrade(grade) {
+         let underAverageGrade = 0
+         for (let a = 0; a < grade.length; a++) {
+            if(grade[a]<4) underAverageGrade +=1
+         }
+         return underAverageGrade
+      }
+
+      let pupilGrade = [5, 4, 3, 3, 3, 5, 2]
+      let pupilGradeF = countingGradeF(pupilGrade)
+      let pupilGoodGrade = countingGoodGrade(pupilGrade)
+      let pupilUnderAverageGrade = countingUnderAverageGrade(pupilGrade)
+
+      document.write(`Кількість двійок: ${pupilGradeF}`)
+      document.write(`<br>Кількість хороших оцінок (добре, відмінно): ${pupilGoodGrade}`)
+      document.write(`<br>Кількість оцінок, які нижче середнього: ${pupilUnderAverageGrade}`)
    </script>
 </body>
 

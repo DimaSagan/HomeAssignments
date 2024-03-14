@@ -11,16 +11,66 @@
    <h1>Рішення задачі №2</h1>
    <p>
       Дано масив, який зберігає кількість відвідувачів магазину протягом тижня. Вивести на екран:
-      <ul>
-         <li>номери днів, протягом яких кількість відвідувачів була меншою за 20;</li>
-         <li>номери днів, коли кількість відвідувачів була максимальною;</li>
-         <li>номери днів, коли кількість відвідувачів була мінімальною;</li>
-         <li>загальну кількість клієнтів у робочі дні та окремо загальну кількість днів на вихідних.</li>
-      </ul>
+   <ul>
+      <li>номери днів, протягом яких кількість відвідувачів була меншою за 20;</li>
+      <li>номери днів, коли кількість відвідувачів була максимальною;</li>
+      <li>номери днів, коли кількість відвідувачів була мінімальною;</li>
+      <li>загальну кількість клієнтів у робочі дні та окремо загальну кількість днів на вихідних.</li>
+   </ul>
    </p>
    <script>
       "use strict"
-      
+      function getVisitorQuantityLessThanTwenty(days) {
+         let lessThanTwenty = []
+         for (let dayVisitor = 0; dayVisitor < days.length; dayVisitor++) {
+            if (days[dayVisitor] < 20) lessThanTwenty.push(dayVisitor + 1)
+         }
+         return lessThanTwenty
+      }
+      function getDayWithMaxVisits(days) {
+         let maxVisitorDay = []
+         let maxVisitor = -Infinity
+         for (let i = 0; i < days.length; i++) {
+            if(maxVisitor<days[i]) maxVisitor=days[i]
+         }
+         for (let i = 0; i < days.length; i++) {
+            if(maxVisitor===days[i]) maxVisitorDay.push(i+1)
+         }
+         return maxVisitorDay
+      }
+      function getDayWithMinVisits(days) {
+         let minVisitorDay = []
+         let minVisitor = Infinity
+         for (let i = 0; i < days.length; i++) {
+            if(minVisitor>days[i]) minVisitor=days[i]
+         }
+         for (let i = 0; i < days.length; i++) {
+            if(minVisitor===days[i]) minVisitorDay.push(i+1)
+         }
+         return minVisitorDay
+      }
+      function getVisitsSum(firstDay, lastDay, days) {
+         let visitsSum = 0
+         for (let i = firstDay-1; i <= lastDay-1; i++) {
+            visitsSum += days[i]
+            
+         }
+         return visitsSum
+      }
+
+      let visitsPerWeek = [10, 12, 17, 25, 30, 120, 140]
+
+      let visitsLessThanTventy = getVisitorQuantityLessThanTwenty(visitsPerWeek)
+      let maxVisitsDays = getDayWithMaxVisits(visitsPerWeek)
+      let minVisitsDays = getDayWithMinVisits(visitsPerWeek)
+      let totalClientNumOnWorkingDays = getVisitsSum(1, 5, visitsPerWeek)
+      let totalClientNumOnWeekendDays = getVisitsSum(6, 7, visitsPerWeek)
+
+      document.write(`У ці дні відвідувачів було меньше за двадцать: ${visitsLessThanTventy}`)
+      document.write(`<br>У ці дні була максимальна кількість відвідувачів: ${maxVisitsDays}`)
+      document.write(`<br>У ці дні була мінімальна кількість відвідувачів: ${minVisitsDays}`)
+      document.write(`<br>Загальна кількість відвідувачів у робочі дні: ${totalClientNumOnWorkingDays}`)
+      document.write(`<br>Загальна кількість відвідувачів у вихідні дні: ${totalClientNumOnWeekendDays}`)
    </script>
 </body>
 
