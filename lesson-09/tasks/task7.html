@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Рішення задачі №7</title>
+</head>
+
+<body>
+   <h1>Рішення задачі №7</h1>
+   <p>
+      Дано масив цін. Змінити цей масив так, що на ціни товарів, які більші за 1000 грн. дати 30% знижки.
+   </p>
+   <script>
+      "use strict"
+      const sale = 0.7 //30%
+      let arr = [2000, 200, 580, 199, 3000, 40000]
+      arr.forEach((element, index, arrPath) => {
+         if(element>1000)arrPath[index] *= sale 
+      });
+      document.write(arr)
+   </script>
+</body>
+
+</html>
