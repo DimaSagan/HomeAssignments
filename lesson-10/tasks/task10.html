@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Рішення задачі №10</title>
+</head>
+
+<body>
+   <h1>Рішення задачі №10</h1>
+   <p>
+      Дано масив цін у грн. Податок складає 20%. Сформувати масив, який буде містити величину сплаченого податку у грн.
+   </p>
+   <script>
+      "use strict"
+      let priceList = [2000, 3000, 1000, 5500, 15000]
+      let tax = 0.8 //20%
+      let taxList = priceList.map(taxPrice => taxPrice*=tax)
+      document.write(taxList)
+   </script>
+</body>
+
+</html>

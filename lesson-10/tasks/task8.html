@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Рішення задачі №8</title>
+</head>
+
+<body>
+   <h1>Рішення задачі №8</h1>
+   <p>
+      Дано масив номерів авто. Сформувати новий масив тих, які починаються на «А».
+   </p>
+   <script>
+      "use strict"
+      let numbers = ["АА12УА", "АА1712УФ", "АХ44Р", "НС2834ЖН", "ВО5533ЛК"]
+      const newNumbers = numbers.filter(element => element[0] === "А")
+      document.write(newNumbers)
+   </script>
+</body>
+
+</html>
