@@ -10,15 +10,23 @@
 <body>
    <h1>Рішення задачі №2</h1>
    <p>
-      Користувач вводить кількість елементів. Створити масив, у якому перша половина заповнена 1-цями, а друга заповнена 7-ками.
+      Сформувати новий масив, у якому є номери тільки тих, що більші за 1000 грн.
    </p>
    <script>
       "use strict"
-      let userNumberElement = parseInt(prompt("Введіть кількість елементів масиву:", "8"))
-      let array = new Array(userNumberElement)
-      array.fill(1, 0, Math.floor(userNumberElement / 2))
-      array.fill(7, Math.floor(userNumberElement / 2 ), userNumberElement)
-      document.write(array)
+      const priceChangePeriodonDays = 30
+      let priceHistory = new Array(priceChangePeriodonDays).fill(0).map(price=> price = 1+Math.floor(Math.random()*10000))
+      console.log(priceHistory)
+      document.write(`Початковий масив: ${priceHistory.join(", ")}<br>`)
+
+      let priceUpperThanThousandIndex = priceHistory.reduce(
+			(previousIndex, price, index) => price>1000 ? [...previousIndex, index+1] : previousIndex, 
+			[]
+		)
+      console.log(priceUpperThanThousandIndex)
+      document.write(`Початковий масив: ${priceUpperThanThousandIndex.join(", ")}<br>`)
+     
+      
    </script>
 </body>
 

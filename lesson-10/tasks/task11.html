@@ -4,13 +4,13 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Рішення задачі №5</title>
+   <title>Рішення задачі №11</title>
 </head>
 
 <body>
-   <h1>Рішення задачі №5</h1>
+   <h1>Рішення задачі №11</h1>
    <p>
-      Підрахувати кількість змін цін.
+      Знайти індекс першої ціни, що більше за 1000
    </p>
    <script>
       "use strict"
@@ -18,10 +18,8 @@
       let priceHistory = new Array(priceChangePeriodonDays).fill(0).map(price => price = 1 + Math.floor(Math.random() * 10000))
       document.write(`Початковий масив: ${priceHistory.join(", ")}<br>`)
 
-      let priceChange = priceHistory.reduce((prevPriceChange, price, index, baseArr) => price !== baseArr[index - 1] && index !== 0 ? prevPriceChange + 1 : prevPriceChange,
-      0
-      )
-      document.write(`Ціна змінилась стільки ${priceChange} разів(рази)`)
+      let firstPriceUpperThanThousand = priceHistory.findIndex((element, index, baseArr)=>element > 1000)
+      document.write(`Індекс першої ціни, що більше за 1000: ${firstPriceUpperThanThousand}`)
    </script>
 </body>
 

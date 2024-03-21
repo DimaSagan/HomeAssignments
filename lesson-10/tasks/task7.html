@@ -10,16 +10,17 @@
 <body>
    <h1>Рішення задачі №7</h1>
    <p>
-      Дано масив цін. Змінити цей масив так, що на ціни товарів, які більші за 1000 грн. дати 30% знижки.
+      Визначати, чи усі ціни більше за 1000
    </p>
    <script>
       "use strict"
-      const sale = 0.7 //30%
-      let arr = [2000, 200, 580, 199, 3000, 40000]
-      arr.forEach((element, index, arrPath) => {
-         if(element>1000)arrPath[index] *= sale 
-      });
-      document.write(arr)
+      const priceChangePeriodonDays = 30
+      let priceHistory = new Array(priceChangePeriodonDays).fill(0).map(price => price = 1 + Math.floor(Math.random() * 10000))
+      document.write(`Початковий масив: ${priceHistory.join(", ")}<br>`)
+
+      let priceLowerThousand = priceHistory.every(price => price > 1000)
+      priceLowerThousand == true ? priceLowerThousand = "Усі ціни більше за 1000" : priceLowerThousand = "Не усі ціни більше за 1000"
+      document.write(priceLowerThousand)
    </script>
 </body>
 

@@ -10,15 +10,17 @@
 <body>
    <h1>Рішення задачі №6</h1>
    <p>
-      Дано масив елементів. Усі елементи, які більші за перший елемент помножити на 2.
+      Визначити, чи є ціна, що менше 1000.
    </p>
    <script>
       "use strict"
-      let arr = [10, 20, 5, 9, 30, 40]
-      arr.forEach((element, index, arrayLink) => {
-         if(element> arrayLink[0]) arrayLink[index]*=2
-      });
-      document.write(arr)
+      const priceChangePeriodonDays = 30
+      let priceHistory = new Array(priceChangePeriodonDays).fill(0).map(price => price = 1 + Math.floor(Math.random() * 10000))
+      document.write(`Початковий масив: ${priceHistory.join(", ")}<br>`)
+
+      let priceLowerThousand = priceHistory.some(price => price < 1000)
+      priceLowerThousand == true ? priceLowerThousand = "Є ціна що меньше за 1000" : priceLowerThousand = "Немає ціни що меньше за 1000"
+      document.write(priceLowerThousand)
    </script>
 </body>
 

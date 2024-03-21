@@ -10,14 +10,16 @@
 <body>
    <h1>Рішення задачі №10</h1>
    <p>
-      Дано масив цін у грн. Податок складає 20%. Сформувати масив, який буде містити величину сплаченого податку у грн.
+      Знайти першу ціну, що більше за 1000
    </p>
    <script>
       "use strict"
-      let priceList = [2000, 3000, 1000, 5500, 15000]
-      let tax = 0.8 //20%
-      let taxList = priceList.map(taxPrice => taxPrice*=tax)
-      document.write(taxList)
+      const priceChangePeriodonDays = 30
+      let priceHistory = new Array(priceChangePeriodonDays).fill(0).map(price => price = 1 + Math.floor(Math.random() * 10000))
+      document.write(`Початковий масив: ${priceHistory.join(", ")}<br>`)
+
+      let firstPriceUpperThanThousand = priceHistory.find(element => element > 1000)
+      document.write(`Перша ціна більша за 1000 це: ${firstPriceUpperThanThousand}`)
    </script>
 </body>
 

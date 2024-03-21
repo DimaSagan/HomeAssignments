@@ -10,13 +10,18 @@
 <body>
    <h1>Рішення задачі №8</h1>
    <p>
-      Дано масив номерів авто. Сформувати новий масив тих, які починаються на «А».
+      Підрахувати кількість цін, що більше за 1000.
    </p>
    <script>
       "use strict"
-      let numbers = ["АА12УА", "АА1712УФ", "АХ44Р", "НС2834ЖН", "ВО5533ЛК"]
-      const newNumbers = numbers.filter(element => element[0] === "А")
-      document.write(newNumbers)
+      const priceChangePeriodonDays = 30
+      let priceHistory = new Array(priceChangePeriodonDays).fill(0).map(price => price = 1 + Math.floor(Math.random() * 10000))
+      document.write(`Початковий масив: ${priceHistory.join(", ")}<br>`)
+
+      let priceMoreThanThousand = priceHistory.reduce((priceSum, price)=> price>1000 ? priceSum + 1 : priceSum,
+      0
+      )
+      document.write(`Кількість цін що більше 1000: ${priceMoreThanThousand}`)
    </script>
 </body>
 

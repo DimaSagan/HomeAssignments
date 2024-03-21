@@ -10,14 +10,21 @@
 <body>
    <h1>Рішення задачі №4</h1>
    <p>
-      Дано масив елементів. Вивести на екран елементи, що більші за 100
+      Сформувати новий масив, що міститиме значення цін у відсотках стосовно максимального
    </p>
    <script>
       "use strict"
-      let array = [33, 22, 111, 123, 55, 200]
-      for (const element of array) {
-         if(element>100) document.write(`${element}<br>`)
-      }
+      const priceChangePeriodonDays = 30
+      let priceHistory = new Array(priceChangePeriodonDays).fill(0).map(price=> price = 1+Math.floor(Math.random()*10000))
+      document.write(`Початковий масив: ${priceHistory.join(", ")}<br>`)
+
+      const priceHistoryMaxPrice = Math.max(...priceHistory)
+      document.write(`Максимальне значення: ${priceHistoryMaxPrice}<br>`)
+
+      let newPriceListPercentOfMax = priceHistory.map(price => Math.floor(price / priceHistoryMaxPrice * 100))
+     
+      document.write(`Масив, що міститиме значення цін у відсотках стосовно максимального: ${newPriceListPercentOfMax.join("%, ")}%<br>`)
+
    </script>
 </body>
 

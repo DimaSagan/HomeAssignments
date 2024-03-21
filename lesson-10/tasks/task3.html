@@ -10,16 +10,16 @@
 <body>
    <h1>Рішення задачі №3</h1>
    <p>
-      Користувач вводить кількість елементів. Створити масив, у якому перші 5 елементів заповнені 1-цями, а інші до кінця масиву заповнені 7-ками.
+      Сформувати список з тих цін, які більші за попереднє значення.
    </p>
    <script>
       "use strict"
-      let userElementNumber = parseInt(prompt("Введіть кількість елементів масиву:", "8"))
-      let array = new Array(userElementNumber)
-      array.fill(1,0,5)
-      array.fill(7,5,userElementNumber)
-      document.write(array)
-      
+      const priceChangePeriodonDays = 30
+      let priceHistory = new Array(priceChangePeriodonDays).fill(0).map(price=> price = 1+Math.floor(Math.random()*10000))
+      document.write(`Початковий масив: ${priceHistory.join(", ")}<br>`)
+
+      let newPriceListHigherPreviousValue = priceHistory.filter((price, index, baseArr) => price>baseArr[index-1])
+      document.write(`Список з тих цін, які більші за попереднє значення: ${newPriceListHigherPreviousValue.join(", ")}<br>`)
    </script>
 </body>
 

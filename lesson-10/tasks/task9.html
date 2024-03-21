@@ -10,14 +10,18 @@
 <body>
    <h1>Рішення задачі №9</h1>
    <p>
-      Дано масив імен. Сформувати масив з перших літер цих імен.
+      Підрахувати суму цін, що більше за 1000
    </p>
    <script>
       "use strict"
-      let namesList = ["Ivan", "Dima", "Alex", "Lena", "Sergey"]
-     
-      let newNamesList = namesList.map(letter => letter[0])
-      document.write(newNamesList)
+      const priceChangePeriodonDays = 30
+      let priceHistory = new Array(priceChangePeriodonDays).fill(0).map(price => price = 1 + Math.floor(Math.random() * 10000))
+      document.write(`Початковий масив: ${priceHistory.join(", ")}<br>`)
+
+      let priceMoreThanThousandSum = priceHistory.reduce((prevPriceSum, price)=> price > 1000 ? prevPriceSum + price: prevPriceSum,
+      0
+      )
+      document.write(`Сума цін що більше за 1000: ${priceMoreThanThousandSum}`)
    </script>
 </body>
 

@@ -10,14 +10,37 @@
 <body>
    <h1>Рішення задачі №1</h1>
    <p>
-      Користувач вводить кількість елементів. Створити масив, що складається з вказаної кількості елементів заповнених нулями.
+      Сформувати новий масив, у якому є тільки ті, що більші за 1000 грн.
    </p>
    <script>
       "use strict"
-      let userElementNumber = parseInt(prompt("Введіть кількість елементів масиву:", "5"))
-      let array = new Array(userElementNumber)
-      array.fill(0)
-      document.write(array)
+
+
+      // const priceChangePeriodonDays = 30
+      // let priceHistory = []
+      // for (let price = 0; price < priceChangePeriodonDays; price++) {
+      //    let randomPrice = 1+ Math.floor(Math.random()*10000)
+      //    priceHistory.push(randomPrice)
+      // }
+
+
+      // const priceChangePeriodonDays = 30
+      // let priceHistory = new Array(priceChangePeriodonDays).fill(0)
+      // priceHistory.forEach((price, index, baseArr)=>{
+      // let random = 1+ Math.floor(Math.random()*10000)
+      // baseArr[index] = random
+      // })
+
+      const priceChangePeriodonDays = 30
+      let priceHistory = new Array(priceChangePeriodonDays).fill(0).map(price => price = 1+ Math.floor(Math.random()*10000))
+      let priceHistoryUpperThanThousant = priceHistory.filter(price => price>1000)
+
+      console.log(priceHistory)
+      console.log(priceHistoryUpperThanThousant)
+
+      document.write(`Початковий масив: ${priceHistory.join(", ")}<br>`)
+      document.write(`Масив у якому є тільки ті, що більші за 1000 грн. : ${priceHistoryUpperThanThousant.join(", ")}`)
+      
    </script>
 
 </body>
