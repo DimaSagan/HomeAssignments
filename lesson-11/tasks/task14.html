@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Рішення задачі 2.7</title>
+</head>
+
+<body>
+    <h1>Рішення задачі 2.7</h1>
+    <p>
+        Відсортувати кожен день за зростанням
+    </p>
+    <script>
+        "use strict"
+        let allMalls = [
+            [120, 2330, 30, 20, 503, 60, 700],
+            [1020, 200, 30, 4030, 720, 600, 700],
+            [141, 22, 33, 454, 55, 6456, 77],
+            [1025, 25, 345, 45, 5335, 635, 75],
+            [1330, 230, 320, 40, 530, 60, 70],
+            [1000, 230, 300, 400, 900, 640, 700],
+            [154, 25, 345, 45, 545, 6005, 75]
+        ]
+        for (let mall = 0; mall < allMalls.length; mall++) {
+            allMalls[mall].sort((profit1, profit2)=> profit1 - profit2)
+            
+        }
+        document.write(allMalls)
+        console.log(allMalls)
+    </script>
+</body>
+
+</html>

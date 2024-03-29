@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Рішення задачі 3</title>
+</head>
+
+<body>
+    <h1>Рішення задачі 3</h1>
+    <p>
+        Морський бій. Випадковим чином на двовимірному полі розміром 6*6 розташовується 5 кораблів. Користувач стріляє вказуючи координати. Гра
+        продовжується поки не потоплено усі кораблі або у користувача не закінчаться снаряди.
+    </p>
+    <script>
+        "use strict"
+        function createBattlefield(rowsQuantity, colsQuantity, shipsQuantity) {
+            let battlefield = []
+            for (let row = 0; row < rowsQuantity; row++) {
+                let row = new Array(colsQuantity).fill(0)
+                battlefield.push(row)
+            }
+            for (let ships = 0; ships < shipsQuantity;) {
+                let row = Math.floor(Math.random() * rowsQuantity)
+                let col = Math.floor(Math.random() * colsQuantity)
+                if (battlefield[row][col] !== 1) {
+                    battlefield[row][col] = 1
+                    ships++
+                }
+            }
+            return battlefield
+        }
+
+
+        function playGame(shipsQuantity, missleQuantity, battlefield) {
+            let target = 0
+            while (shipsQuantity > 0 && missleQuantity > 0) {
+                let row = parseInt(prompt("Введіть рядок")) - 1
+                let col = parseInt(prompt("Введіть колонку")) - 1
+                missleQuantity--
+                if (battlefield[row][col] === 1) {
+                    shipsQuantity--
+                    target += 1
+                    alert(`Є влучання! \nУ вас залишилось ${missleQuantity} снарядів \n Кількість кораблів ${shipsQuantity}`)
+                    battlefield[row][col] = 0
+                } else alert(`Промах =(  \nУ вас залишилось ${missleQuantity} снарядів`)
+            }
+            if (shipsQuantity === 0) document.write("Ви перемогли! Всі кораблі знищені.")
+            else document.write(`Кораблів залишилось ${shipsQuantity} Кількість влучань ${target}`)
+        }
+
+        function play(ships = 5, missles = 10, row = 6, col = 6) {
+            let battlefield = createBattlefield(row, col, ships)
+            let start = playGame(ships, missles, battlefield)
+            console.log(battlefield)
+        }
+        play()
+    </script>
+</body>
+
+</html>

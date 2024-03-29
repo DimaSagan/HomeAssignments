@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Рішення задачі 2.6</title>
+</head>
+
+<body>
+    <h1>Рішення задачі 2.6</h1>
+    <p>
+        Сформувати загальний список (одновимірний масив) зі значенням, які що більші за 200
+    </p>
+    <script>
+        "use strict"
+        let allMalls = [
+            [10, 20, 30, 40, 50, 60, 70],
+            [100, 200, 300, 400, 500, 600, 700],
+            [11, 22, 33, 44, 55, 66, 77],
+            [15, 25, 35, 45, 55, 65, 75],
+            [10, 20, 30, 40, 50, 60, 70],
+            [100, 200, 300, 400, 500, 600, 700],
+            [15, 25, 35, 45, 55, 65, 75]
+        ]
+       let profitUpperThan200 = []
+       for (let mall = 0; mall < allMalls.length; mall++) {
+        for (let mallProfit = 0; mallProfit < allMalls[mall].length; mallProfit++) {
+           if(allMalls[mall][mallProfit]>200) profitUpperThan200.push(allMalls[mall][mallProfit])
+        }
+       }
+       document.write(`${profitUpperThan200.join("$, ")}$;`)
+    </script>
+</body>
+
+</html>

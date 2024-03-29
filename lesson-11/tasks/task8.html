@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Рішення задачі 2.1</title>
+</head>
+
+<body>
+   <h1>Рішення задачі 2.1</h1>
+   <p>
+      Загальний прибуток кожного масиву за тиждень;
+   </p>
+   <script>
+      "use strict"
+      let allMalls = [
+         [10, 20, 30, 40, 50, 60, 70],
+         [100, 200, 300, 400, 500, 600, 700],
+         [11, 22, 33, 44, 55, 66, 77],
+         [15, 25, 35, 45, 55, 65, 75],
+         [10, 20, 30, 40, 50, 60, 70],
+         [100, 200, 300, 400, 500, 600, 700],
+         [15, 25, 35, 45, 55, 65, 75]
+      ]
+      for (let mall = 0; mall < allMalls.length; mall++) {
+         let mallProfit = 0
+         for (let profit = 0; profit < allMalls[mall].length; profit++) {
+            mallProfit +=  allMalls[mall][profit]
+            
+         }
+         document.write(`Загальний прибуток магазину № ${mall+1} за тиждень: ${mallProfit}$;<br>`)
+      }
+   </script>
+</body>
+
+</html>
