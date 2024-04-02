@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Рішення задачі №2</title>
+</head>
+
+<body>
+   <h1>Рішення задачі №2</h1>
+   <p>
+      Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів та порівнянь чисел під час сортування змішуванням.
+   </p>
+   <script>
+      "use strict"
+      function doChange(array, a, b) {
+         let c = array[a]
+         array[a] = array[b]
+         array[b] = c
+         return array[a], array[b]
+      }
+
+      let arr = new Array(30).fill().map(() => Math.floor(Math.random() * 100))
+      let leftIndex = 0
+      let rightIndex = arr.length - 1
+      let changeCounter = 0
+      let comparisonCounter = 0
+
+      while (leftIndex < rightIndex) {
+         let swap = false
+         for (let index = leftIndex; index < rightIndex; index++) {
+            if (arr[index] > arr[index + 1]) {
+               doChange(arr, index + 1, index)
+               changeCounter += 1
+               swap = true
+            }
+            comparisonCounter += 1
+         }
+         rightIndex--
+
+         for (let index = rightIndex; index > leftIndex; index--) {
+            if (arr[index] < arr[index - 1]) {
+               doChange(arr, index - 1, index)
+               changeCounter += 1
+               swap = true
+            }
+            comparisonCounter += 1
+         }
+         leftIndex++
+         if (!swap) {
+            break
+         }
+      }
+
+      document.write(`${arr} <br>`)
+      document.write(`Кількість обмінів: ${changeCounter}<br>`)
+      document.write(`Кількіть порівнянь: ${comparisonCounter}`)
+   </script>
+</body>
+
+</html>
