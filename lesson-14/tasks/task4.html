@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Рішення задачі №4</title>
+</head>
+
+<body>
+   <h1>Рішення задачі №4</h1>
+   <p>
+      Створити загальний список усіх спонсорів (поки можуть повторюватись, просто зібрати усі у масив)
+   </p>
+   <script>
+      "use strict"
+
+      let webProduct = [
+         {
+            companyName: "meta",
+            director: "mark zuckerberg",
+            sponsors: [
+               {
+                  sponsorLastName: "Kuchma",
+                  sponsorFirstName: "Dima",
+                  investments: 15000
+               },
+               {
+                  sponsorLastName: "Burda",
+                  sponsorFirstName: "Evgen",
+                  investments: 1000
+               }
+            ],
+            releaseYear: 2000,
+            siteCost: 20000
+         },
+         {
+            companyName: "2d corp",
+            director: "Yo Dyagich",
+            sponsors: [
+               {
+                  sponsorLastName: "John",
+                  sponsorFirstName: "Soprano",
+                  investments: 25000
+               },
+               {
+                  sponsorLastName: "Tucko",
+                  sponsorFirstName: "Salamanka",
+                  investments: 17000
+               }
+            ],
+            releaseYear: 2010,
+            siteCost: 40000
+         },
+
+         {
+            companyName: "Sloboda Service",
+            director: "Evgeniya Stepanovna",
+            sponsors: [
+               {
+                  sponsorLastName: "Selikantiy",
+                  sponsorFirstName: "Robot",
+                  investments: 250
+               },
+               {
+                  sponsorLastName: "Olha",
+                  sponsorFirstName: "Zolochev",
+                  investments: 125
+               }
+            ],
+            releaseYear: 2019,
+            siteCost: 450
+         }
+      ]
+
+      let res = []
+      for (const product of webProduct) {
+         for (const sponsor of product.sponsors) {
+            let sponsorFirstAndLastName = " " + sponsor.sponsorFirstName + " " + sponsor.sponsorLastName
+            res.push(sponsorFirstAndLastName)
+         }
+      }
+      document.write(res)
+      console.log(res)
+   </script>
+</body>
+
+</html>

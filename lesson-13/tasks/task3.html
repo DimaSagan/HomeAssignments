@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Рішення задачі №3</title>
+</head>
+
+<body>
+   <h1>Рішення задачі №3</h1>
+   <p>
+      Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів та порівнянь чисел під час сортування включеннями.
+   </p>
+   <script>
+      "use strict"
+      let arr = new Array(30).fill().map(() => Math.floor(Math.random() * 100))
+      let changeCounter = 0
+      let comparisonCounter = 0
+
+
+      for (let k = 1; k < arr.length; k++) {
+         let key = arr[k]
+         let i = k - 1
+         while (i >= 0 && arr[i] > key) {
+            arr[i + 1] = arr[i]
+            i = i - 1
+            comparisonCounter += 1
+         }
+         arr[i + 1] = key
+         if (i !== k - 1) changeCounter++;
+      }
+      document.write(`${arr} <br>`)
+      document.write(`${comparisonCounter} <br>`)
+      document.write(`${changeCounter} <br>`)
+
+   </script>
+</body>
+
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Рішення задачі №6</title>
+</head>
+
+<body>
+   <h1>Рішення задачі №6</h1>
+   <p>
+      Упорядкувати список за спаданням прибутку.
+   </p>
+   <script>
+      "use strict"
+      
+      let webProduct = [
+         {
+            companyName: "meta",
+            director: "mark zuckerberg",
+            sponsors: [
+               {
+                  sponsorLastName: "Kuchma",
+                  sponsorFirstName: "Dima",
+                  investments: 15000
+               },
+               {
+                  sponsorLastName: "Burda",
+                  sponsorFirstName: "Evgen",
+                  investments: 1000
+               }
+            ],
+            releaseYear: 2000,
+            siteCost: 20000
+         },
+         {
+            companyName: "2d corp",
+            director: "Yo Dyagich",
+            sponsors: [
+               {
+                  sponsorLastName: "John",
+                  sponsorFirstName: "Soprano",
+                  investments: 25000
+               },
+               {
+                  sponsorLastName: "Tucko",
+                  sponsorFirstName: "Salamanka",
+                  investments: 17000
+               }
+            ],
+            releaseYear: 2010,
+            siteCost: 450000
+         },
+
+         {
+            companyName: "Sloboda Service",
+            director: "Evgeniya Stepanovna",
+            sponsors: [
+               {
+                  sponsorLastName: "Selikantiy",
+                  sponsorFirstName: "Robot",
+                  investments: 250
+               },
+               {
+                  sponsorLastName: "Olha",
+                  sponsorFirstName: "Zolochev",
+                  investments: 125
+               }
+            ],
+            releaseYear: 2019,
+            siteCost: 450
+         }
+      ]
+      function getProfit(array){
+         let allProfit = []
+         for (let i = 0; i < array.length; i++) {
+            let investments = 0
+            for (let j = 0; j < array[i].sponsors.length; j++) {
+               investments += array[i].sponsors[j].investments
+            }
+            let profit = array[i].siteCost-investments
+            allProfit.push(profit)
+         }
+         return allProfit 
+      }
+      let profit = getProfit(webProduct)
+      document.write(`${profit}<br>`)
+      let sort = profit.sort((a, b)=> b-a)
+      document.write(sort)
+   </script>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Рішення задачі 2</title>
+</head>
+
+<body>
+   <h1>Рішення задачі 2</h1>
+   <p>
+      Розробити функцію, у яку передають об’єкт (день, місяць, рік). Визначити, який буде рік через N місяців.
+   </p>
+   <script>
+      "use strict"
+      
+      function getYear (object, monthQuantity){
+         let initialYear = object.year
+         let calcYear = Math.floor((monthQuantity + object.month)/ 12)
+         let yearResult = calcYear + initialYear
+         return yearResult
+      }
+
+      let date = {
+         day: 2,
+         month: 3,
+         year: 1991 
+      }
+      let res = getYear(date, 89)
+      console.log(res)
+
+      
+      
+      let currentDate = new Date()
+      let date2 = {
+         day: currentDate.getDate(),
+         month: currentDate.getMonth(),
+         year: currentDate.getFullYear() 
+      }
+      let monthEntter = parseInt(prompt(`Поточна дата:\n${date2.day}.${date2.month}.${date2.year}\nВведіть кількість місяців щоб отримати наступний рік`, "6"))
+      let res2 = getYear(date2, monthEntter)
+      console.log(res2)
+   </script>
+</body>
+
+</html>

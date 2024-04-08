@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Рішення задачі №2</title>
+</head>
+
+<body>
+   <h1>Рішення задачі №2</h1>
+   <p>
+      Кількість сайтів, що було зроблено між 2000 та 2009 рр.
+   </p>
+   <script>
+      "use strict"
+
+      let webProduct = [
+         {
+            companyName: "meta",
+            director: "mark zuckerberg",
+            sponsors: [
+               {
+                  sponsorLastName: "Kuchma",
+                  sponsorFirstName: "Dima",
+                  investments: 15000
+               },
+               {
+                  sponsorLastName: "Burda",
+                  sponsorFirstName: "Evgen",
+                  investments: 1000
+               }
+            ],
+            releaseYear: 2000,
+            siteCost: 20000
+         },
+         {
+            companyName: "2d corp",
+            director: "Yo Dyagich",
+            sponsors: [
+               {
+                  sponsorLastName: "John",
+                  sponsorFirstName: "Soprano",
+                  investments: 25000
+               },
+               {
+                  sponsorLastName: "Tucko",
+                  sponsorFirstName: "Salamanka",
+                  investments: 17000
+               }
+            ],
+            releaseYear: 2008,
+            siteCost: 40000
+         },
+
+         {
+            companyName: "Sloboda Service",
+            director: "Evgeniya Stepanovna",
+            sponsors: [
+               {
+                  sponsorLastName: "Selikantiy",
+                  sponsorFirstName: "Robot",
+                  investments: 250
+               },
+               {
+                  sponsorLastName: "Olha",
+                  sponsorFirstName: "Zolochev",
+                  investments: 125
+               }
+            ],
+            releaseYear: 2019,
+            siteCost: 450
+         }
+      ]
+      
+      let productionsInterval = webProduct.reduce((prevQantity, object) => object.releaseYear > 2000 && object.releaseYear < 2009 ? prevQantity + 1 : prevQantity
+         , 0
+      )
+      document.write(`Кількість сайтів, що було зроблено між 2000 та 2009 рр. : ${productionsInterval};`)
+   </script>
+</body>
+
+</html>

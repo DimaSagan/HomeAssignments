@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Рішення задачі №2</title>
+</head>
+
+<body>
+   <h1>Рішення задачі №2</h1>
+   <p>
+      Дано масив імен спортсменів. Розробити програму для виведення усіх можливих результатів змагань (списки імен у відповідності до місць, які вони займуть).
+   </p>
+   <script>
+      "use strict"
+      function getAllPlaces(arr){
+         function replace(names, replaceArr = []){
+            if(names.length===0){
+               places.push(replaceArr)
+               return
+            }
+            for (let i = 0; i < names.length; i++) {
+            const newArr = names.slice(0, i).concat(names.slice(i + 1));
+            replace(newArr, replaceArr.concat([names[i]]));
+        }
+         }
+         let places = []
+         replace(arr)
+         return places
+      }
+
+
+      let athleteName = ["Іван","Тарас","Петро"]
+      let res = getAllPlaces(athleteName)
+      console.log(res)
+
+      res.forEach((name, places)=>document.write(`${places+1}: ${name}<br>`))
+
+
+   </script>
+</body>
+
+</html>

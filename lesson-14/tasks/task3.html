@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Рішення задачі №3</title>
+</head>
+
+<body>
+   <h1>Рішення задачі №3</h1>
+   <p>
+      Кількість сайтів, де сума спонсорських вкладень була більшою за 100000
+   </p>
+   <script>
+      "use strict"
+      let webProduct = [
+         {
+            companyName: "meta",
+            director: "mark zuckerberg",
+            sponsors: [
+               {
+                  sponsorLastName: "Kuchma",
+                  sponsorFirstName: "Dima",
+                  investments: 150000
+               },
+               {
+                  sponsorLastName: "Burda",
+                  sponsorFirstName: "Evgen",
+                  investments: 1000
+               }
+            ],
+            releaseYear: 2000,
+            siteCost: 20000
+         },
+         {
+            companyName: "2d corp",
+            director: "Yo Dyagich",
+            sponsors: [
+               {
+                  sponsorLastName: "John",
+                  sponsorFirstName: "Soprano",
+                  investments: 25000
+               },
+               {
+                  sponsorLastName: "Tucko",
+                  sponsorFirstName: "Salamanka",
+                  investments: 170000
+               }
+            ],
+            releaseYear: 2008,
+            siteCost: 40000
+         },
+
+         {
+            companyName: "Sloboda Service",
+            director: "Evgeniya Stepanovna",
+            sponsors: [
+               {
+                  sponsorLastName: "Selikantiy",
+                  sponsorFirstName: "Robot",
+                  investments: 250
+               },
+               {
+                  sponsorLastName: "Olha",
+                  sponsorFirstName: "Zolochev",
+                  investments: 125
+               }
+            ],
+            releaseYear: 2019,
+            siteCost: 450
+         }
+      ]
+
+      let investmentsGreaterThan100k = webProduct.reduce((prevQuatity, object) =>
+      object.sponsors.reduce((prevInvestments, value)=> prevInvestments + value.investments,0) > 100000 ? prevQuatity + 1 : prevQuatity
+      , 0)
+
+      document.write(`${investmentsGreaterThan100k}`)
+   </script>
+</body>
+
+</html>

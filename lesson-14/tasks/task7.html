@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Рішення задачі №7</title>
+</head>
+
+<body>
+   <h1>Рішення задачі №7</h1>
+   <p>
+      Створити 2 окремих списки з копіями об’єктів, що містять сайти з вартість до 10000 і більше 10000
+   </p>
+   <script>
+      "use strict"
+      
+      
+      let webProduct = [
+         {
+            companyName: "meta",
+            director: "mark zuckerberg",
+            sponsors: [
+               {
+                  sponsorLastName: "Kuchma",
+                  sponsorFirstName: "Dima",
+                  investments: 15000
+               },
+               {
+                  sponsorLastName: "Burda",
+                  sponsorFirstName: "Evgen",
+                  investments: 1000
+               }
+            ],
+            releaseYear: 2000,
+            siteCost: 20000
+         },
+         {
+            companyName: "2d corp",
+            director: "Yo Dyagich",
+            sponsors: [
+               {
+                  sponsorLastName: "John",
+                  sponsorFirstName: "Soprano",
+                  investments: 25000
+               },
+               {
+                  sponsorLastName: "Tucko",
+                  sponsorFirstName: "Salamanka",
+                  investments: 17000
+               }
+            ],
+            releaseYear: 2010,
+            siteCost: 40000
+         },
+
+         {
+            companyName: "Sloboda Service",
+            director: "Evgeniya Stepanovna",
+            sponsors: [
+               {
+                  sponsorLastName: "Selikantiy",
+                  sponsorFirstName: "Robot",
+                  investments: 250
+               },
+               {
+                  sponsorLastName: "Olha",
+                  sponsorFirstName: "Zolochev",
+                  investments: 125
+               }
+            ],
+            releaseYear: 2019,
+            siteCost: 450
+         }
+      ]
+      let priceFilter = 10000
+      let copyWebProductMoreThan10k = JSON.parse(JSON.stringify(webProduct.filter((object)=>object.siteCost> priceFilter)))
+      let copyWebProductLowerThan10k = JSON.parse(JSON.stringify(webProduct.filter((object)=>object.siteCost< priceFilter)))
+   
+      console.log(copyWebProductMoreThan10k)
+      console.log(copyWebProductLowerThan10k)
+   </script>
+</body>
+
+</html>

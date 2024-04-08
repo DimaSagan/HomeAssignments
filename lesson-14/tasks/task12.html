@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Рішення задачі 2.5</title>
+</head>
+
+<body>
+   <h1>Рішення задачі 2.5</h1>
+   <p>
+      Максимальний прибуток за середу:
+   </p>
+   <script>
+      "use strict"
+      let allMalls = [
+         [10, 20, 30, 40, 50, 60, 70],
+         [100, 200, 300, 400, 500, 600, 700],
+         [11, 22, 33, 44, 55, 66, 77],
+         [15, 25, 35, 45, 55, 65, 75],
+         [10, 20, 30, 40, 50, 60, 70],
+         [100, 200, 300, 400, 500, 600, 700],
+         [15, 25, 35, 45, 55, 65, 75]
+      ]
+      let maxWednesdayProfit = allMalls[0][2]
+      for (let mall = 0; mall < allMalls.length; mall++) {
+         for (let maxProfit = 2; maxProfit < 3; maxProfit++) {
+            if (maxWednesdayProfit < allMalls[mall][2]) maxWednesdayProfit = allMalls[mall][2]
+         }
+      }
+      document.write(` Максимальний прибуток за середу: ${maxWednesdayProfit}$;`)
+   </script>
+</body>
+
+</html>
