@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Рішення задачі №7</title>
+</head>
+
+<body>
+   <h1>Рішення задачі №7</h1>
+   <p>
+      Тренажер додавання. Кожні 10 секунд користувачу задають випадковий приклад з додавання двох цифр і робиться перевірка.
+   </p>
+   <script>
+      "use strict"
+
+
+      function getQuestion() {
+         let a = Math.floor(Math.random() * 11)
+         let b = Math.floor(Math.random() * 11)
+         let answer = parseInt(prompt(`Скільки буде  ${a}+${b} = ?`))
+         let check = checkAnswer(a, b, answer)
+         if (check === true) document.write(`Вірно<br>`)
+         else if (isNaN(answer)) clearInterval(question)
+         else document.write(`Не вірно<br>`)
+      }
+      function checkAnswer(a, b, answer) {
+         let res = false
+         if (a + b === answer) res = true
+         return res
+      }
+
+      let start = getQuestion()
+
+
+      let question = setInterval(getQuestion, 10000)
+
+   </script>
+</body>
+
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Рішення задачі №4</title>
+</head>
+
+<body>
+   <h1>Рішення задачі №4</h1>
+   <p>
+      Створити клас TBankomat, який моделює роботу банкомата. Клас повинен містити поля для зберігання кількості купюр кожного із номіналів від 5 до
+      200 гривень. Реалізувати методи знаходження максимальної та мінімальної сум, які може видати банкомат, та метод зняття деякої суми.
+   </p>
+
+
+   <script>
+      "use strict"
+      class Note {
+         constructor(denomination, quantity) {
+            this.denomination = denomination
+            this.quantity = quantity
+         }
+      }
+      class TBankomat {
+         constructor(money) {
+            this.money = money.sort((a, b) => b.denomination - a.denomination)
+            console.log(this.money)
+         }
+         // знаходження максимальної суми
+         getMaxVal() {
+            let max = this.money.reduce((prevVal, object) => prevVal + (object.denomination * object.quantity), 0)
+            return max
+         }
+         // знаходження мінімальної суми
+         getMinVal() {
+            let min = this.money[0].denomination
+            for (let i = 1; i < this.money.length; i++) {
+               if (this.money[i].quantity != 0 && this.money[i].denomination < this.money[i - 1].denomination) min = this.money[i].denomination
+            }
+            return min
+         }
+         // метод зняття деякої суми
+         withdraw(amount) {
+
+            if (amount > this.getMaxVal()) {
+               document.write("Запитана сума перевищує максимальний ліміт банкомата.<br>")
+               return
+            }
+
+            let remainingAmount = amount
+            let withdrawal = []
+
+
+            for (let i = 0; i < this.money.length; i++) {
+               const notesToWithdraw = Math.min(Math.floor(remainingAmount / this.money[i].denomination), this.money[i].quantity)
+               if (notesToWithdraw > 0) {
+                  withdrawal.push(new Note(this.money[i].denomination, notesToWithdraw))
+                  remainingAmount -= notesToWithdraw * this.money[i].denomination
+               }
+            }
+
+            if (remainingAmount === 0) {
+               for (const moneys of withdrawal) {
+                  for (let i = 0; i < this.money.length; i++) {
+                     if (this.money[i].denomination === moneys.denomination) {
+                        this.money[i].quantity -= moneys.quantity
+                        break
+                     }
+                  }
+               }
+               document.write(`Загальна сума видачі ${amount}<br>`)
+               for (const moneys of withdrawal) {
+                  document.write(`${moneys.denomination} - ${moneys.quantity} <br>`)
+               }
+            } else document.write("Банкомат не може видати запитану суму грошей.<br>")
+
+         }
+         
+         toString() {
+            let result = ''
+            for (const note of this.money) {
+               result += `Номінал: ${note.denomination}, Кількість: ${note.quantity} <br>`
+            }
+            return result
+         }
+      }
+
+
+
+      let moneyStack = [
+         new Note(5, 20),
+         new Note(10, 10),
+         new Note(20, 10),
+         new Note(50, 10),
+         new Note(100, 10),
+         new Note(200, 10)
+      ]
+
+      let test = new TBankomat(moneyStack)
+
+      console.log(test.getMinVal())
+      test.withdraw(55)
+      document.write(test.toString())
+      test.withdraw(5)
+      document.write(test.toString())
+   </script>
+</body>
+
+</html>

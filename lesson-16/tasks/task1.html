@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Рішення задачі №1</title>
+</head>
+
+<body>
+   <h1>Рішення задачі №1</h1>
+   <p>
+      Створити клас TDate для роботи із датами у форматі “день.місяць.рік”. Дата представляється структурою із трьома полями. Реалізувати методи
+      збільшення/зменшення дати на певну кількість днів, місяців чи років. Введення та виведення дати реалізувати за допомогою методу toString.
+   </p>
+   <script>
+      "use strict"
+
+
+      class TDate {
+         #day
+         #month
+         #year
+
+         constructor(day, month, year) {
+            this.#day = day
+            this.#month = month
+            this.#year = year
+         }
+
+         // Вивід 
+         toString() {
+            return document.write(`${this.#day}.${this.#month}.${this.#year}<br>`)
+         }
+
+         // Збільшення днів
+         getChangeDay(val) {
+            this.#day += val
+            this.getCorrectDate()
+            this.toString()
+         }
+
+         // Збільшення місяців
+         getChangeMonth(val) {
+            this.#month += val
+            this.getCorrectDate()
+            this.toString()
+         }
+
+         // Збільшення років
+         getChangeYear(val) {
+            this.#year += val
+            this.getCorrectDate()
+            this.toString()
+         }
+
+         // Метод корекції дати
+         getCorrectDate() {
+            // Коригуємо дні
+            while (this.#day > this.getDayInMonth()) {
+               this.#day -= this.getDayInMonth()
+               this.#month++
+               if (this.#month > 12) {
+                  this.#month = 1
+                  this.#year++
+               }
+            }
+            while (this.#day < 1) {
+               this.#month--
+               if (this.#month < 1) {
+                  this.#month = 12
+                  this.#year--
+               }
+               this.#day += this.getDayInMonth()
+            }
+         }
+
+         // Перевірка кількості днів у поточному місяці
+         getDayInMonth() {
+            switch (this.#month) {
+               case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+                  return 31
+               case 4: case 6: case 9: case 11:
+                  return 30
+               case 2:
+                  return (this.#year % 4 === 0 && (this.#year % 100 !== 0 || this.#year % 400 === 0)) ? 29 : 28
+            }
+         }
+      }
+
+      let test = new TDate(15, 4, 2024)
+
+
+      test.getChangeDay(2470)
+      test.getChangeYear(-270)
+
+
+
+   </script>
+
+</body>
+
+</html>

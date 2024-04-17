@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Рішення задачі №4</title>
+</head>
+
+<body>
+   <h1>Рішення задачі №4</h1>
+   <p>
+      Розробити клас Baner
+   </p>
+   <style>
+      .banner {
+         max-width: 400px;
+         display: inline-block;
+         position: relative;
+      }
+
+      .banner img {
+         width: 100%;
+      }
+
+      .banner__text {
+         position: absolute;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background-color: rgb(120, 118, 118);
+         opacity: 0;
+         animation-name: blink;
+         animation-duration: 8s;
+         animation-iteration-count: infinite;
+      }
+
+      .banner__text h2 {
+         color: #fff;
+         text-align: center;
+      }
+
+      @keyframes blink {
+         40% {
+            opacity: 0;
+         }
+
+         50% {
+            opacity: 1;
+         }
+         90% {
+            opacity: 1;
+         }
+         100% {
+            opacity: 0;
+         }
+      }
+   </style>
+   
+   <script>
+      "use strict"
+
+      // Масив об’єктів ( графічних зображень та посилань на сайти)
+      class Banner {
+         constructor(images) {
+            this.images = images
+         }
+         // Метод випадкового вибору об’єкта(графічного зображення та посилання)
+         getRandomImages = function () {
+            let random = Math.floor(Math.random() * this.images[0].length)
+            let show = this.showBanner(random)
+         }
+         // Метод виведення випадкового банера
+         showBanner = function (val) {
+            document.write(`
+            <a href="${this.images[1][val]}" class="banner" target="_blank">
+               <div class="banner__text">
+                   <h2>Переходь щоб дізнатись більше</h2>
+               </div>
+               <img src="${this.images[0][val]}" alt="Banner">
+             </a>
+            `)
+         }
+      }
+
+      let data = [
+         ["img/01.jpeg", "img/02.jpeg", "img/03.webp"],
+         [
+            "https://www.highsnobiety.com/p/virgil-abloh-palace-cannondale-bike/",
+            "https://sport.ua/news/677320-velosport-van-der-pul-vtoroy-raz-podryad-vyigral-parizh-rube",
+            "https://www.globalcyclingnetwork.com/racing/news/primoz-roglic-forced-to-skip-liege-bastogne-liege-through-injury"
+         ]
+      ]
+
+      let startBannering = new Banner(data)
+      startBannering.getRandomImages()
+   </script>
+</body>
+
+</html>

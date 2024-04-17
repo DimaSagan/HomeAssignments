@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Рішення задачі №2</title>
+</head>
+
+<body>
+   <h1>Рішення задачі №2</h1>
+   <p>
+      Створити клас TMoney для роботи з грошовими сумами. Сума повинна зберігатися у вигляді доларового еквіваленту. Реалізувати методи
+      додавання/вилучення грошової маси, вказуючи необхідну суму у гривнях, та визначення курсу долара, при якому сума у гривнях збільшиться на 100.
+      Курс долара зберігати в окремому полі.
+   </p>
+   <script>
+      "use strict"
+
+      class TMoney {
+         #usd
+         #exchangeRate
+
+         constructor(usd, exchangeRate) {
+            this.#usd = usd
+            this.#exchangeRate = exchangeRate
+         }
+         get Dollars() {
+            return this.#usd
+         }
+         get ExchangeRate() {
+            return this.#exchangeRate
+         }
+         set ExchangeRate(newRate) {
+            this.#exchangeRate = newRate
+         }
+
+         // Метод для додавання грошей у валюті гривень
+         addMoneyInUah(amountInUah) {
+            let amountInUsd = amountInUah / this.#exchangeRate
+            this.#usd += amountInUsd
+         }
+
+         // Метод для вилучення грошей у валюті гривень
+         withdrawMoneyInUah(amountInUah) {
+            let amountInUsd = amountInUah / this.#exchangeRate
+            if (amountInUsd <= this.#usd) {
+               this.#usd -= amountInUsd
+            } else {
+              throw new Error("Недостатньо коштів на рахунку")
+            }
+         }
+
+         findExchangeRateFor100UahIncrease() {
+            let rate = 1
+            let uahIncrease = 0
+            while (uahIncrease < 100) {
+               let newUahAmount = (this.#usd * rate) * this.#exchangeRate
+               uahIncrease = newUahAmount - (this.#usd * this.#exchangeRate)
+               if (uahIncrease < 100) {
+                  rate += 0.01
+               }
+            }
+            return rate
+         }
+         toString = function () {
+             return`${this.#usd.toFixed(2)}$<br> ${this.#exchangeRate}<br>${this.findExchangeRateFor100UahIncrease()}`
+         }
+      }
+
+
+      let test = new TMoney(100, 39.5)
+      // test.addMoneyInUah(3500)
+      test.withdrawMoneyInUah(3000)
+      document.write(test)
+   </script>
+</body>
+
+</html>

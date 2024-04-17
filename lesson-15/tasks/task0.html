@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Рішення задачі №0</title>
+</head>
+
+<body>
+   <h1>Рішення задачі №0</h1>
+   <p>
+      Дано два об’єкта. Обидва містять масив цілих чисел. При цьому у одному з них є функція знаходження суми, а у іншому – функція для знаходження
+      добутку тих, які знаходяться між заданими мінімальним і максимальних значенням.
+      Використати обидва методи стосовно обидвох об’єктів (використати call, apply)
+   </p>
+   <script>
+      "use strict"
+
+      let object1 = {
+         arr: [1, 2, 3, 4],
+         sum: function(val1=0){
+          return this.arr.reduce((prevSum, number)=>prevSum + number) + val1
+         }
+      }
+
+      let object2 = {
+         arr: [5, 6, 7, 8,9],
+         minMaxMultiplication: function(val1=0){
+            let min = Math.min(...this.arr)
+            let max = Math.max(...this.arr)
+            let result = 1 
+            for (const number of this.arr) {
+               if(number>min&&number<max) result *=number
+            }
+            return result + val1
+         }
+      }
+      let object1MultiplicationCall = object2.minMaxMultiplication.call(object1)
+      document.write(`${object1MultiplicationCall}<br>`)
+
+      let object1MultiplicationApply = object2.minMaxMultiplication.apply(object1)
+      document.write(`${object1MultiplicationApply}<br>`)
+
+      let object2SumCall = object1.sum.call(object2,9)
+      document.write(`${object2SumCall}<br>`)
+
+      let object2SumApply = object1.sum.apply(object2, [10])
+      document.write(`${object2SumApply}<br>`)
+
+
+   </script>
+
+</body>
+
+</html>

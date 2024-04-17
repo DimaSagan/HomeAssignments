@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Рішення задачі №2</title>
+</head>
+
+<body>
+   <h1>Рішення задачі №2</h1>
+   <p>
+      Створити об’єкт «Авто».
+   </p>
+   <script>
+      "use strict"
+      let car = {
+         //Поля(властивості)
+         brand: "audi",   // Марка
+         tankSizeLiter: 100,// Розмір бака
+         currentFuelLevel: 50,// Кількість наявних літрів
+         seatCapacity: 4,// Кількість місць
+         passengerCapacity: 3, // Кількість пасажирів
+         // Методи (дії)
+         // Заправка на вказану кількість літрів
+         refueling: function (liters = 0) {
+            if (liters < 0 || liters > this.tankSizeLiter - this.currentFuelLevel)
+               alert("Перевірте рівень пального, та коректність вказаної кількості літрів")
+            else this.currentFuelLevel += liters
+         },
+         // Виведення кількості пасажирів
+         toString: function () {
+            return document.write(`Кількість пасажирів ${this.passengerCapacity}`)
+         },
+         // Додавання пасажирів
+         addPassenger: function (number = 0) {
+            let emptySeats = this.seatCapacity - this.passengerCapacity
+            if (number > emptySeats) alert(`Вільних місць залишилось ${emptySeats}`)
+            else this.passengerCapacity += number
+         },
+         // Висадка пасажирів
+         passengerDisembarking: function (number = 0) {
+            if (number > this.passengerCapacity) alert("У вас немає такої кількості пасажирів")
+            else this.passengerCapacity -= number
+         }
+
+      }
+      car.passengerDisembarking(3)
+      car.addPassenger(2)
+      car.toString()
+      car.refueling(25)
+      document.write(`<br>Кількість наявних літрів ${car.currentFuelLevel}`)
+   </script>
+</body>
+
+</html>

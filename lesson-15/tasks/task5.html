@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Рішення задачі №5</title>
+</head>
+
+<body>
+   <h1>Рішення задачі №5</h1>
+   <p>
+      Розробити клас «Керівник танців»
+   </p>
+   <script>
+      "use strict"
+
+      class DanceDirector {
+         constructor(male, female) {
+            this.male = male.slice()
+            this.female = female.slice()
+         }
+         // Метод випадкового вибору імені хлопця
+         getRandomMale = function () {
+            let randomMale = Math.floor(Math.random() * this.male.length)
+            let maleName = this.male[randomMale]
+            this.male.splice(randomMale, 1)
+            return maleName
+         }
+         // Метод випадкового вибору імені дівчини
+         getRandomFemale = function () {
+            let randomFemale = Math.floor(Math.random() * this.female.length)
+            let femaleName = this.female[randomFemale]
+            this.female.splice(randomFemale, 1)
+            return femaleName
+         }
+         // Метод виведення пари для танців
+         startDance = function () {
+            document.write(`${this.getRandomFemale()} + ${this.getRandomMale()}<br>`)
+         }
+         // Метод run , який ініціює через кожні 5 секунд виведення нової пари для танців
+         run = function () {
+            let interval = setInterval(() => {
+               if (this.male.length === 0 || this.female.length === 0)
+                  clearInterval(interval)
+               else this.startDance()
+            }, 5000)
+
+         }
+      }
+
+      let dancePairs = [
+         ["Alexander", "John", "Michael", "William", "James", "David", "Robert", "Joseph", "Christopher", "Daniel"],
+         ["Emily", "Emma", "Olivia", "Sophia", "Ava", "Isabella", "Mia", "Amelia", "Harper", "Evelyn"]
+      ]
+      let dance = new DanceDirector(dancePairs[0], dancePairs[1])
+      dance.run()
+   </script>
+</body>
+
+</html>

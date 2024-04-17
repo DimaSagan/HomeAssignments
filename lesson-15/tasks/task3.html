@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Рішення задачі №3</title>
+</head>
+
+<body>
+   <h1>Рішення задачі №3</h1>
+   <p>
+      Розробити клас MultChecker для перевірки таблиці множення
+   </p>
+   <script>
+      "use strict"
+
+
+
+
+      class MultChecker {
+         constructor(number, correctAnswer = 0, wrongAnswer = 0) {
+            this.number = number  //Число, яке перевіряємо
+            this.correctAnswer = correctAnswer // Кількість правильних відповідей
+            this.wrongAnswer = wrongAnswer // Кількість неправильних відповідей
+         }
+         //==================
+         // Генерування прикладу (метод випадковим чином визначає друге число, перше число фіксоване)
+         genQuestion = function (val) {
+            for (let i = 0; i < val; i++) {
+               let seconNumder = 1 + Math.floor(Math.random() * 9)
+               let answer = parseInt(prompt(`Приклад № ${i + 1}\n ${this.number} * ${seconNumder}`))
+               this.checkAnswer(seconNumder, answer)
+            }
+            this.render()
+         }
+         // Перевірка правильності вказаної відповіді
+         checkAnswer = function (seconNumder, answer) {
+            if (this.number * seconNumder === answer) this.correctAnswer += 1
+            else this.wrongAnswer += 1
+         }
+         // render - виведення інформації про тестування на екран
+         render = function () {
+            document.write(`Кількість правильних відповідей: ${this.correctAnswer}<br>
+            Кількість неправильних відповідей: ${this.wrongAnswer}`)
+         }
+      }
+      let test = new MultChecker(7)
+      test.genQuestion(2)
+   </script>
+</body>
+
+</html>

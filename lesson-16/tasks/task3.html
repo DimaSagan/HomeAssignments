@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="css/style.css">
+   <title>Рішення задачі №3</title>
+</head>
+
+<body>
+   <h1>Рішення задачі №3</h1>
+   <p>
+      Об’єкт “Фірма” (використати члени-класи)
+   </p>
+   <script>
+      "use strict"
+      // послуги(назва послуги, вартість, термін виконання);
+      class Services {
+         constructor(serviceName, servicesPrice, servicesTerm) {
+            this.serviceName = serviceName
+            this.servicesPrice = servicesPrice
+            this.servicesTerm = servicesTerm
+         }
+      }
+      // адреси філіалів(країна, місто, вулиця, номер будинку);
+      class BranchOffice {
+         constructor(country, city, street, buildingNumber) {
+            this.country = country
+            this.city = city
+            this.street = street
+            this.buildingNumber = buildingNumber
+         }
+      }
+
+      class Company {
+         // назва фірми;
+         // дата заснування(рік, місяць);
+         #yearFoundation
+         constructor(companyName, yearFoundation, services, addresses) {
+            this.companyName = companyName
+            this.#yearFoundation = yearFoundation
+            this.services = services
+            this.addresses = addresses
+         }
+         get YearFoundation() {
+            return this.#yearFoundation
+         }
+         // визначення кількості років існування фірми;
+         getExistenceTime() {
+            let currentYear = new Date().getFullYear()
+            return currentYear - this.YearFoundation[0]
+         }
+         // виведення всіх філіалів фірми у вказаному місті;
+         getAddresses(val) {
+            let branches = this.addresses.filter((element) => element.city == val)
+            document.write(`
+            <section class="company-description"> 
+               <div class="company-description__container">
+               <h2>Пункти сервісу у місти ${val}:</h2>
+            `)
+            for (const branch of branches) {
+               for (const key in branch) {
+                  document.write(`<i>${branch[key]}</i> `)
+               }
+               document.write(`;<br>`)
+            }
+            document.write(`</div></section>`)
+         }
+         // виведення на екран послуг, що можуть бути виконані за вказану суму грошей та вказаний термін часу;
+         getService(price, term) {
+            let services = this.services.filter((element) => price >= element.servicesPrice && term >= element.servicesTerm)
+            document.write(`
+               <section class="company-description"> <div class="company-description__container">
+               <h3>Доступні послуги на суму ${price}грн. та термін виконання ${term} днів</h3>
+               <table>
+                  <tr>
+                        <th>Назва послуги</th>
+                        <th>Вартість</th>
+                        <th>Термін виконання (дні)</th>
+                    </tr>
+                  `)
+            for (const service of services) {
+               document.write(`<tr>`)
+               for (const key in service) {
+                  document.write(`<td>${service[key]}</td>`)
+               }
+               document.write(`</tr>`)
+            }
+            document.write(`</table></div></section>`)
+         }
+
+         toSting() {
+            return `
+         <section class="company-description">
+            <div class="company-description__container">
+            <p>
+            Компанія Mobile Service - це інноваційна компанія, яка спеціалізується на наданні послуг з ремонту та обслуговування мобільних пристроїв.
+            Заснована у <b>${this.YearFoundation[0]}</b> році, вона вже довгий час визначає стандарти якості та надійності у цій галузі.
+            </p>
+            <p>
+            Основні послуги, що надаються "Mobile Service", включають заміну екранів, батарей, а також повне відновлення мобільних пристроїв після
+            пошкоджень.
+            Компанія відома своєю професійною та оперативною роботою, завдяки чому здобула довіру та популярність серед клієнтів.
+            </p>
+            <p>
+            Mobile Service має ряд філіалів у великих містах України, зокрема в Харкові та Києві. Вони розташовані у зручних для клієнтів місцях та
+            забезпечують швидке та якісне обслуговування.
+            </p>
+            <p>
+            Завдяки своїм високим стандартам обслуговування та професійному підходу до роботи, компанія Mobile Service продовжує збільшувати свою
+            клієнтську базу та підтверджує своє лідерство на ринку послуг з ремонту мобільних пристроїв вже <b>${this.getExistenceTime()}</b> років.
+            </p>
+            </div>
+         </section>`
+         }
+      }
+      let test = new Company(
+         "Mobile service", [2012, 3],
+         [new Services("Зміна екрану", 2000, 2), new Services("Зміна батареї", 1000, 2), new Services("Повне відновлення", 7000, 5), new Services("Захист екрану", 500, 1)],
+         [new BranchOffice("Україна", "Харків", "Полтавський Шлях", 34),
+         new BranchOffice("Україна", "Харків", "Льва Ландау", 148),
+         new BranchOffice("Україна", "Харків", "Сумська", 1),
+         new BranchOffice("Україна", "Київ", "Хрещятик", 28),
+         new BranchOffice("Україна", "Київ", "Софіївська", 42),
+         ]
+      )
+      test.getExistenceTime()
+
+
+      document.write(test.toSting())
+      test.getAddresses("Харків")
+      test.getService(7000, 7)
+
+   </script>
+</body>
+
+</html>

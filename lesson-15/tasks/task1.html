@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Рішення задачі №1</title>
+</head>
+
+<body>
+   <h1>Рішення задачі №1</h1>
+   <p>
+      Створити об’єкт «Тир». У масиві зберігаються 1, якщо у цьому квадраті є заєць і 0 в іншому випадку
+   </p>
+   <script>
+      "use strict"
+      let tyre = {
+         // Масив, у якому зберігається поле з зайцями
+         gameField: new Array(7).fill().map(() => Math.floor(Math.random() * 2)),
+
+         // Метод пострілу (задається позиція пострілу)
+         shot: function () {
+            let shotQuantity = this.gameField.length
+            while (shotQuantity > 0) {
+               let userAction = parseInt(prompt(`Перед вами ${this.gameField.length} мішеней. Оберіть в яку будете стріляти`))
+               if (this.gameField[userAction - 1] === 1) {
+                  alert("Ви влучили у зайця")
+                  this.gameField[userAction - 1] = "Влучив"
+               }
+               else alert("Ця мішень була порожня")
+               shotQuantity--
+            }
+            this.output()
+         },
+         // метод Виведення ігрового поля
+         output: function () {
+            document.write(this.gameField)
+         }
+      }
+
+      tyre.shot()
+
+
+
+
+
+
+
+      // let gameField =   new Array(10).fill().map(()=>Math.floor(Math.random()*2)) 
+      // document.write(gameField)
+   </script>
+
+</body>
+
+</html>

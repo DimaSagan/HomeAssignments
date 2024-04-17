@@ -10,73 +10,33 @@
 <body>
    <h1>Рішення задачі №4</h1>
    <p>
-      Для розглянутих методів сортування спробувати вивести етапи сортування шляхом виведення відповідних таблиць за зразком .
+      Дано масив хлопців і дівчат вивести всі можливі комбінації для танців з хлопців і дівчат
    </p>
    <script>
       "use strict"
-      function doChange(array, a, b) {
-         let c = array[a]
-         array[a] = array[b]
-         array[b] = c
-         return array[a], array[b]
-      }
-      document.write(`<h2>Бульбашка</h2>`)
-      let changed
-      let arr = [2, 3, 4, 5, 1]
-      document.write(`${arr.join(', ')}<br>`)
-      document.write(`<br>`)
-      do {
-         changed = false
-         for (let i = 1; i < arr.length; i++) {
-            if (arr[i - 1] > arr[i]) {
-               doChange(arr, i - 1, i)
-               changed = true
-               document.write(`${arr.join(', ')}<br>`)
+
+      let dancingPartners = [
+         ["Alex", "Rob", "John"],
+         ["Marta", "Lora", "Helen"]
+      ]
+
+      function getDancingPartnersVariation(arr, resArr = []) {
+         if (arr[0].length === 0) {
+            for (let i = 0; i < resArr.length; i++) {
+               document.write(`${resArr[i]} with ${arr[1][i]}<br>`)
+            }
+         } else {
+            for (let j = 0; j < arr[0].length; j++) {
+               getDancingPartnersVariation(
+                  [arr[0].filter((element, index) => index !== j), arr[1]], [...resArr, arr[0][j]]
+               )
             }
          }
-      } while (changed)
-
-      document.write(`<h2>Змішування</h2>`)
-      let arr2 = [2, 3, 0, 4, 5, 1]
-      document.write(`${arr2.join(', ')}<br>`)
-      document.write(`<br>`)
-      let leftIndex = 0
-      let rightIndex = arr2.length - 1
-      while (leftIndex < rightIndex) {
-         for (let index = leftIndex; index < rightIndex; index++) {
-            if (arr2[index] > arr2[index + 1]) {
-               doChange(arr2, index + 1, index)
-               document.write(`${arr2.join(', ')}<br>`)
-            }
-         }
-         rightIndex--
-
-         for (let index = rightIndex; index > leftIndex; index--) {
-            if (arr2[index] < arr2[index - 1]) {
-               doChange(arr2, index - 1, index)
-               document.write(`${arr2.join(', ')}<br>`)
-            }
-         }
-         leftIndex++
-
       }
 
 
-      document.write(`<h2>Змішування</h2>`)
-      let arr3 = [3, 5, 1, 4, 2, 6, 7, -1, 0]
-      document.write(`${arr3.join(', ')}<br>`)
-      document.write(`<br>`)
-      for (let k = 1; k < arr3.length; k++) {
-         let key = arr3[k]
-         let i = k - 1
-         while (i >= 0 && arr3[i] > key) {
-            arr3[i + 1] = arr3[i]
-            i = i - 1
-         }
-         arr3[i + 1] = key
-         document.write(`${arr3.join(', ')}<br>`)
-      }
-
+      let res = getDancingPartnersVariation(dancingPartners)
+      console.log(res)
    </script>
 </body>
 
