@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Рішення задачі №1</title>
+</head>
+
+<body>
+   <h1>Рішення задачі №1</h1>
+   <p>
+      Створити клас, що дозволяє виконувати такі операції над масивами: знаходження кількості додатних, кількості від’ємних, кількість входжень
+      деякого числа (статичні методи)
+   </p>
+   <script>
+      "use strict"
+
+      class GeneratorArrNumbers {
+         constructor(numValue, minNumValue, maxNumValue) {
+            this.numValue = numValue
+            this.minNumValue = minNumValue
+            this.maxNumValue = maxNumValue
+         }
+         gen() {
+            let res = new Array(this.numValue).fill().map(() => this.minNumValue + Math.floor(Math.random() * (this.maxNumValue - this.minNumValue + 1)))
+            document.write(`${res}<br><br>`)
+            return res
+         }
+      }
+
+      class ArrOperations {
+         constructor(arr, numQuantity) {
+            this.arr = arr
+            console.log(this.arr)
+            this.numQuantity = numQuantity
+         }
+
+         // знаходження кількості додатних
+         static getPositive(arr) {
+            let res = 0
+            if (Array.isArray(arr[0])) {
+               for (const str of arr) {
+                  for (const col of str) {
+                     if (col > 0) res += 1
+                  }
+               }
+            } else res = arr.reduce((prevSum, num,) => num > 0 ? prevSum + 1 : prevSum, 0)
+            document.write(`Кількість додатних: ${res}<hr>`)
+         }
+
+         // знаходження кількості від’ємних
+         static getNegative(arr) {
+            let res = 0
+            if (Array.isArray(arr[0])) {
+               for (const str of arr) {
+                  for (const col of str) {
+                     if (col < 0) res += 1
+                  }
+               }
+            } else res = arr.reduce((prevSum, num) => num < 0 ? prevSum + 1 : prevSum, 0)
+            document.write(`Кількість від’ємних:  ${res}<hr>`)
+         }
+
+         // кількість входжень деякого числа
+         static getNumQuantity(arr, val) {
+            let res = 0
+            if (Array.isArray(arr[0])) {
+               for (const str of arr) {
+                  for (const col of str) {
+                     if (col === val) res += 1
+                  }
+               }
+            } else res = arr.reduce((prevSum, num) => num === val ? prevSum + 1 : prevSum, 0)
+            document.write(`Кількість входжень числа(${val}) :  ${res}<hr>`)
+         }
+         start() {
+            ArrOperations.getPositive(this.arr)
+            ArrOperations.getNegative(this.arr)
+            ArrOperations.getNumQuantity(this.arr, this.numQuantity)
+         }
+      }
+
+
+      let test = [
+         new GeneratorArrNumbers(20, -10, 10).gen(),
+         new GeneratorArrNumbers(20, -20, 20).gen(),
+         new GeneratorArrNumbers(20, -30, 30).gen(),
+      ]
+      let test2 = new ArrOperations(test, 7)
+
+      test2.start()
+
+      let test3 = new ArrOperations(new GeneratorArrNumbers(20, -10, 10).gen(), 8)
+      test3.start()
+
+      let test4 = [3, 4, 5, 6, 2, 4, -5, -5, -3, -2, -2]
+      ArrOperations.getPositive(test4)
+   </script>
+
+</body>
+
+</html>

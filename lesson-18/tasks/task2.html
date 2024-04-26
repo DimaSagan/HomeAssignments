@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Рішення задачі №2</title>
+   <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+   <h1>Рішення задачі №2</h1>
+   <p>
+      Зробити конвертер валют (курси валют – константи у скрипті)
+   </p>
+
+   <main class="page">
+      <section class="page__programm programm">
+         <div class="programm__container">
+            <div class="programm__header">
+               <input type="number" value="" id="uah" placeholder="Введіть суму">
+               <label for="uah">Сума в ₴</label>
+               <button id="convert">Конвертувати</button>
+            </div>
+
+            <div class="programm__footer">
+               <input type="number" value="" id="eu" placeholder="Ви отримаєте">
+               <label for="eu">Сума в €</label>
+               <input type="number" value="" id="usd" placeholder="Ви отримаєте">
+               <label for="usd">Сума в $</label>
+            </div>
+         </div>
+      </section>
+   </main>
+   <script>
+      "use strict"
+      const usd = 39
+      const eu = 42
+      function converter() {
+         let uah = parseFloat(document.getElementById("uah").value)
+         let euRes = uah / eu
+         let usdRes = uah / usd
+         document.getElementById("eu").value = Math.round(euRes)
+         document.getElementById("usd").value = Math.round(usdRes)
+      }
+
+
+      document.getElementById("convert").onclick = converter
+
+   </script>
+</body>
+
+</html>

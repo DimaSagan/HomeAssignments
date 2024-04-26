@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Рішення задачі №1</title>
+   <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+   <div class="wrapper">
+      <header class="header">
+         <h1>Рішення задачі №1</h1>
+         <p>
+            Розробити калькулятор
+         </p>
+      </header>
+
+      <main class="page">
+         <section class="program">
+            <div class="program__container">
+               <div class="program__header">
+                  <input type="number" name="first-num" id="first-num" placeholder="first-num" value="">
+                  <input type="number" name="second-num" id="second-num" placeholder="second-num" value="">
+               </div>
+               <div class="program__options">
+                  <button id="plus">+</button>
+                  <button id="minus">—</button>
+                  <button id="multiply">×</button>
+                  <button id="dividing">÷</button>
+               </div>
+               <div class="program__footer">
+                  <input type="number" name="result" id="result" placeholder="result">
+                  <button id="reset">reset</button>
+               </div>
+            </div>
+         </section>
+      </main>
+      <footer></footer>
+   </div>
+   <script>
+      "use strict"
+
+      function getSum() {
+         let firstNumber = parseFloat(document.getElementById("first-num").value)
+         let secondNumber = parseFloat(document.getElementById("second-num").value)
+         let sum = firstNumber + secondNumber
+         document.getElementById('result').value = sum
+      }
+      function getSubtract() {
+         let firstNumber = parseFloat(document.getElementById("first-num").value)
+         let secondNumber = parseFloat(document.getElementById("second-num").value)
+         let res = firstNumber - secondNumber
+         document.getElementById("result").value = res
+      }
+      function getMulti() {
+         let firstNumber = parseFloat(document.getElementById("first-num").value)
+         let secondNumber = parseFloat(document.getElementById("second-num").value)
+         let res = firstNumber * secondNumber
+         document.getElementById("result").value = res
+      }
+
+      function getDividing() {
+         let firstNumber = parseFloat(document.getElementById("first-num").value)
+         let secondNumber = parseFloat(document.getElementById("second-num").value)
+         let res = firstNumber / secondNumber
+         document.getElementById("result").value = res
+      }
+      function clear() {
+         document.getElementById("result").value = ""
+         document.getElementById("first-num").value = ""
+         document.getElementById("second-num").value = ""
+
+      }
+
+      document.getElementById("plus").onclick = getSum
+      document.getElementById("minus").onclick = getSubtract
+      document.getElementById("multiply").onclick = getMulti
+      document.getElementById("dividing").onclick = getDividing
+      document.getElementById("reset").onclick = clear
+
+   </script>
+
+</body>
+
+</html>

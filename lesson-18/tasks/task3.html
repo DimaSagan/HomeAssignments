@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="css/style.css">
+   <title>Рішення задачі №3</title>
+</head>
+
+<body>
+   <h1>Рішення задачі №3</h1>
+   <p>
+      Об’єкт “Фірма” (використати члени-класи)
+   </p>
+
+   <div class="program-wrapper">
+      <div class="get-age">
+            <h2>Дізнайся свій вік</h2>
+            <input type="number" id="birth-year" required>
+            <button type="submit" id="start">Дізнатись скільки років</button>
+         
+         <p class="get-age__result" id="result"></p>
+      </div>
+   </div>
+
+   <script>
+      "use strict"
+      const currentYear = new Date().getFullYear()
+      console.log(currentYear)
+      function getUserAge() {
+         let birthYear = document.getElementById("birth-year").value
+         let res = currentYear - birthYear
+         document.getElementById("result").innerText = `Ваш вік складає ${res}`
+      }
+      document.getElementById("start").onclick = getUserAge
+   </script>
+</body>
+
+</html>

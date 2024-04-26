@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Рішення задачі №4</title>
+</head>
+
+<body>
+   <h1>Рішення задачі №4</h1>
+   <p>
+      Склад. База товарів, які зберігаються на складі: назва товару, одиниця виміру, кількість, фірма виробник (назва, реєстраційний номер).
+      Організувати реєстрацію/відвантаження товарів, фільтрація за назвою товару, фільтрація за назвою фірми
+   </p>
+
+
+   <script>
+      "use strict"
+      class Company {
+         #licenseNumber
+         get LicenseNumber() {
+            return this.#licenseNumber
+         }
+         set LicenseNumber(val) {
+            if (isNaN(val)) throw new Error("Не правельний реєстраційний номер")
+            this.#licenseNumber = val
+         }
+         constructor(name, licenseNumber) {
+            this.name = name
+            this.LicenseNumber = licenseNumber
+         }
+         toString() {
+            return `${this.name} ${this.LicenseNumber}`
+         }
+      }
+
+      class Product {
+         constructor(productName, dimensionsType, quantity, companyName) {
+            this.productName = productName
+            this.dimensionsType = dimensionsType
+            this.quantity = quantity
+            this.companyName = companyName
+         }
+         toString() {
+            return `<br>${this.productName} ${this.quantity} ${this.dimensionsType}  ${this.companyName}`
+         }
+      }
+
+      class Storage {
+         constructor(productsData) {
+            this.productsData = productsData
+            console.log(this.productsData)
+         }
+
+         addProduct(val) {
+            let check = 1
+            for (const product of this.productsData) {
+               if (product.productName === val.productName && val.companyName.name === product.companyName.name) {
+                  product.quantity += val.quantity
+                  check = -1
+               }
+            }
+            if (check === 1) this.productsData.push(val)
+         }
+
+         shippingProduct(productName, productQuantity, productMaker) {
+
+            for (let i = 0; i < this.productsData.length; i++) {
+               const product = this.productsData[i]
+               if (productName === product.productName && productMaker === product.companyName.name) {
+                  if (product.quantity < productQuantity) {
+                     throw new Error('Такої кількості не має')
+                  } else {
+                     product.quantity -= productQuantity
+                     if (product.quantity === 0) {
+                        this.productsData.splice(i, 1)
+                     }
+                     break
+                  }
+               }
+            }
+         }
+
+         filterByProductName(val) {
+            let filter = this.productsData.filter(product => product.productName === val)
+            document.write(`${filter}`)
+         }
+
+         filterByCompanyName(val) {
+            let filter = this.productsData.filter(product => product.companyName.name === val)
+            document.write(`${filter}`)
+         }
+
+         toString() {
+            return this.productsData
+         }
+
+      }
+
+      let productList = [
+         new Product("Картопля", "кг", 500, new Company("ФОП Тарас", 11223344)),
+         new Product("Морква", "кг", 200, new Company("ФОП Тарас", 11223344)),
+         new Product("Лук", "кг", 150, new Company("ФОП Тарас", 11223344))
+      ]
+
+      let test = new Storage(productList)
+      test.addProduct(new Product("Масло", "уп", 100, new Company("ФОП Микола", 55667788)))
+      test.addProduct(new Product("Молоко", "уп", 100, new Company("ФОП Микола", 55667788)))
+      test.addProduct(new Product("Сир", "кг", 40, new Company("ФОП Микола", 55667788)))
+      document.write(test.toString())
+
+      document.write(`<hr> Оновляю кількість товару(сир та морква):`)
+      test.addProduct(new Product("Сир", "кг", 40, new Company("ФОП Микола", 55667788)))
+      test.addProduct(new Product("Морква", "кг", 300, new Company("ФОП Егор", 41923704)))
+      document.write(test.toString())
+
+      document.write(`<hr> Відвантажую товар (картопля, масло):`)
+      test.shippingProduct("Картопля", 50, "ФОП Тарас")
+      test.shippingProduct("Масло", 50, "ФОП Микола")
+      document.write(test.toString())
+
+      document.write(`<hr> Шукаю моркву:`)
+      test.filterByProductName("Морква")
+
+      document.write(`<hr> Шукаю по назві компанії:`)
+      test.filterByCompanyName("ФОП Тарас")
+   </script>
+</body>
+
+</html>

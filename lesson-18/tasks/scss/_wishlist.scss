@@ -1,0 +1,53 @@
+.wrapper {
+    
+    // .wrapper__wishlist
+
+    &__wishlist {
+        flex-grow: 1;
+        background-color: #29103f;
+        
+    }
+}
+.wishlist {
+    
+    // .wishlist__program
+
+    &__program {
+        color: #fff;
+        padding: 50px;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        font-size: 30px;
+    }
+    
+    &__block{
+        background-color: #ffffff5c;
+        padding: 35px;
+        font-style: italic;
+        border-radius: 30px;
+        opacity: 0;
+        transition: 1s;
+        .loaded & {
+            opacity: 1;
+        }    
+        &[val="1"]{
+            align-self: flex-end;
+            transition-delay: 1s;
+        }
+        &[val="2"]{
+            align-self: flex-start;
+            transition-delay: 1.5s;
+        }
+        &[val="3"]{
+            align-self: center;
+            transition-delay: 2s;
+        }
+        
+    }
+    
+}
+
+
+
+

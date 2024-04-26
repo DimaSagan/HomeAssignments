@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Рішення задачі №6</title>
+   <style>
+      .get-table__container {
+         max-width: 800px;
+         background-color: rgba(172, 255, 47, 0.343);
+         padding: 40px 20px;
+      }
+
+      .get-table__header,
+      .get-table__body {
+         text-align: center;
+
+         &:not(:last-child) {
+            margin-bottom: 10px;
+         }
+
+         border-bottom: 2px solid rgb(35, 122, 41);
+         padding-bottom: 10px;
+      }
+
+      .number-of-grades {
+         min-width: 200px;
+      }
+
+      .get-table__body {
+         display: flex;
+         flex-wrap: wrap;
+         gap: 10px;
+
+         input {
+            flex-basis: 100px;
+         }
+      }
+
+      .result-data {
+         /* display: inline-block; */
+         color: #fff;
+         background-color: red;
+         width: 50px;
+         height: 50px;
+         padding: 5px;
+         /* text-align: center; */
+         border-radius: 50%;
+         /* vertical-align: middle; */
+         display: inline-flex;
+         align-items: center;
+         justify-content: center;
+      }
+   </style>
+</head>
+
+<body>
+   <h1>Рішення задачі №6</h1>
+   <p>
+      Користувач задає кількість оцінок і натискає на кнопку «get table». В результаті формується таблиця з input, куди користувач вводить оцінки.
+      Після цього натискає на кнопку “get sum” і знаходить середнє значення.
+   </p>
+
+   <section class="get-table">
+      <div class="get-table__container">
+         <div class="get-table__header">
+            <label for="number-of-grades">Кількість оцінок</label>
+            <input type="number" placeholder="Введіть кількість оцінок" id="number-of-grades" class="number-of-grades" value="">
+            <button id="get-table">Get table</button>
+         </div>
+         <!-- <div class="get-table__body"></div> -->
+         <div class="get-table__result">
+            <button class="result">Get sum</button>
+         </div>
+      </div>
+   </section>
+   <script>
+      "use strict"
+
+      function getTable() {
+         const getTableHeader = document.querySelector(".get-table__header")
+         const tableBody = document.createElement("div")
+         tableBody.classList.add("get-table__body")
+         getTableHeader.after(tableBody)
+         const numberOfGrades = document.querySelector(".number-of-grades").value
+
+         // const tableBody = document.querySelector(".get-table__body")
+         for (let i = 0; i < numberOfGrades; i++) {
+            const input = document.createElement("input")
+            input.setAttribute("type", "number")
+            input.setAttribute("placeholder", `${i + 1}) Введіть оцінку`)
+            input.classList.add("grade")
+            tableBody.append(input)
+         }
+
+      }
+      function getSum() {
+         const grades = document.querySelectorAll(".grade")
+         const result = document.querySelector(".get-table__result")
+         let sum = 0
+         for (const grade of grades) {
+            sum += parseInt(grade.value)
+         }
+         let res = document.createElement("div")
+         res.classList.add("result-data")
+         result.appendChild(res)
+         res.innerText = sum
+      }
+
+      document.getElementById("get-table").onclick = getTable
+      document.querySelector(".result").onclick = getSum
+
+   </script>
+</body>
+
+</html>

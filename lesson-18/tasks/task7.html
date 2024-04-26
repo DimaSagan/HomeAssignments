@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Рішення задачі №7</title>
+   <style>
+      .travel__block:nth-child(3) {
+         margin-bottom: 20px;
+      }
+
+      .travel__block {
+         display: flex;
+         align-items: center;
+         gap: 20px;
+      }
+   </style>
+</head>
+
+<body>
+   <h1>Рішення задачі №7</h1>
+   <p>
+      Подорож складається з 3 етапів. На кожному етапі користувач може вибрати один з видів транспорту (авто, автобус, літак - випадаючий список),
+      харчування (сніданок, обід, вечеря – checkbоx) та одного з 3-х гідів(використати - radio buttons). Ціни визначте самі. Підрахувати загальну
+      вартість.
+   </p>
+
+   <section class="travel">
+      <div class="travel__block">
+         <h2>Stage One</h2>
+         <select name="transport-type" class="transport">
+            <option value="1">Car</option>
+            <option value="2">Bus</option>
+            <option value="3">Airplane</option>
+         </select>
+         <label for="breakfast">Breakfast</label>
+         <input type="checkbox" id="breakfast" name="food" price="30">
+
+         <label for="lunch">Lunch</label>
+         <input type="checkbox" id="lunch" name="food" price="50">
+
+         <label for="dinner">Dinner</label>
+         <input type="checkbox" id="dinner" name="food" price="60">
+
+         <label for="guide-one">John</label>
+         <input type="radio" id="guide-one" name="guide" price="200">
+         <label for="guide-two">Sara</label>
+         <input type="radio" id="guide-two" name="guide" price="300">
+         <label for="guide-three">Laura</label>
+         <input type="radio" id="guide-three" name="guide" price="250">
+      </div>
+
+      <div class="travel__block">
+         <h2>Stage Two</h2>
+         <select name="transport-type" class="transport">
+            <option value="1">Car</option>
+            <option value="2">Bus</option>
+            <option value="3">Airplane</option>
+         </select>
+         <label for="breakfast2">Breakfast</label>
+         <input type="checkbox" id="breakfast2" name="food" price="30">
+
+         <label for="lunch2">Lunch</label>
+         <input type="checkbox" id="lunch2" name="food" price="50">
+
+         <label for="dinner2">Dinner</label>
+         <input type="checkbox" id="dinner2" name="food" price="60">
+
+         <label for="guide-one2">John</label>
+         <input type="radio" id="guide-one2" name="guide" price="200">
+         <label for="guide-two2">Sara</label>
+         <input type="radio" id="guide-two2" name="guide" price="300">
+         <label for="guide-three2">Laura</label>
+         <input type="radio" id="guide-three2" name="guide" price="250">
+      </div>
+
+      <div class="travel__block">
+         <h2>Stage Three</h2>
+         <select name="transport-type" class="transport">
+            <option value="1">Car</option>
+            <option value="2">Bus</option>
+            <option value="3">Airplane</option>
+         </select>
+         <label for="breakfast3">Breakfast</label>
+         <input type="checkbox" id="breakfast3" name="food" price="30">
+
+         <label for="lunch3">Lunch</label>
+         <input type="checkbox" id="lunch3" name="food" price="50">
+
+         <label for="dinner3">Dinner</label>
+         <input type="checkbox" id="dinner3" name="food" price="60">
+
+         <label for="guide-one3">John</label>
+         <input type="radio" id="guide-one3" name="guide" price="200">
+         <label for="guide-two3">Sara</label>
+         <input type="radio" id="guide-two3" name="guide" price="300">
+         <label for="guide-three3">Laura</label>
+         <input type="radio" id="guide-three3" name="guide" price="250">
+      </div>
+      <button id="get-total">Total price</button>
+      <span class="result"></span>
+   </section>
+   <script>
+      "use strict"
+
+      function travel() {
+         const transports = document.querySelectorAll(".transport")
+         const food = document.querySelectorAll(`input[name="food"]`)
+         const guide = document.querySelectorAll(`input[name="guide"]`)
+         const res = document.querySelector(".result")
+         let transportPrice = 0
+         for (const transport of transports) {
+            let selectedTransport = parseInt(transport.value)
+            switch (selectedTransport) {
+               case 1: transportPrice += 200
+                  break
+               case 2: transportPrice += 500
+                  break
+               case 3: transportPrice += 900
+                  break
+            }
+         }
+         let foodPrice = 0
+         for (const checkbox of food) {
+            if (checkbox.checked) foodPrice += parseInt(checkbox.getAttribute("price"))
+         }
+         let guidePrice = 0
+         for (const radio of guide) {
+            if (radio.checked) foodPrice += parseInt(radio.getAttribute("price"))
+         }
+         let totalPrice = transportPrice + foodPrice
+         res.innerText = totalPrice
+      }
+
+      document.getElementById("get-total").onclick = travel
+   </script>
+</body>
+
+</html>

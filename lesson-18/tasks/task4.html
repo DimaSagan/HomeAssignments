@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Рішення задачі №4</title>
+   <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+   <!-- <h1>Рішення задачі №4</h1>
+   <p>
+      Наперед задано у скрипті масив зі списком бажань. Після завантаження сторінки випадковим чином вибираються 3 і відображаються у окремих div (їх
+      треба створити і додати на сторінку)
+   </p> -->
+   <div class="wrapper">
+      <!-- <header class="wrapper__header header "></header> -->
+      <main class="wrapper__wishlist wishlist">
+         <section class="wishlist__program">
+
+         </section>
+      </main>
+      <!-- <footer class="wrapper__footer footer">
+1
+      </footer> -->
+   </div>
+
+   <script>
+      "use strict"
+      const programSection = document.querySelector(".wishlist__program")
+
+      function getWish(arr, num) {
+         let wish = arr.slice()
+         let res = []
+         while (res.length < num) {
+            let wishNumber = Math.floor(Math.random() * (wish.length))
+            res.push(wish[wishNumber])
+            wish.splice(wishNumber, 1)
+         }
+         res.forEach(element => {
+            const createElement = createWishBlock(element)
+            programSection.appendChild(createElement)
+         })
+
+      }
+      function createWishBlock(val) {
+         const div = document.createElement("div")
+         let alignNum = 1 + Math.floor(Math.random() * 3)
+         div.classList.add("wishlist__block")
+         div.setAttribute("val", alignNum)
+         // div.setAttribute("style","opacity:1;")
+         div.innerText = val
+         return div
+      }
+
+      const wishlist = [
+         "Подорож на Мальдіви",
+         "Новий смартфон",
+         "Професійна камера",
+         "Навчання гри на гітарі",
+         "Книга 'JS для чайників'",
+         "Фітнес-абонемент",
+         "М'який плед із шерсті альпака",
+         "Кулінарний курс від шеф-кухаря",
+         "Татуювання",
+         "Малюнок від улюбленого художника"
+      ]
+
+
+      document.documentElement.DOMContentLoaded = getWish(wishlist, 3)
+      document.addEventListener("DOMContentLoaded", function () {
+         document.body.classList.add("loaded");
+      });
+
+
+   </script>
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Рішення задачі №5</title>
+   <style>
+      .table-generator{
+         max-width: 800px;
+         margin: 0 auto;
+         padding: 30px;
+         background-color: rgba(128, 128, 128, 0.186);
+         border-radius: 20px;
+      }
+      .table-generator__header{
+         text-align: center;
+         &:not(:last-child){
+         margin-bottom: 20px;
+         }
+      }
+      table{
+         border: 2px solid black;
+         padding: 2px;
+         margin: 0 auto;
+      }
+      tr{
+         
+      }
+      td{
+         border: 2px solid black;
+         padding:  10px;
+         text-align: center;
+      }
+   </style>
+</head>
+
+<body>
+   <h1>Рішення задачі №5</h1>
+   <p>
+      Відобразити таблицю 3*4 з випадковими числами (її треба динамічно створити і вставити на сторінку)
+   </p>
+
+   <section class="table-generator">
+      <div class="table-generator__header">
+         <label for="column">Кількість стовпців</label>
+         <input type="number" value="3" class="column" id="column">
+         <label for="row">Кількість рядків</label>
+         <input type="number" value="4" class="row" id="row">
+         <button id="generate">Створити</button>
+      </div>
+   </section>
+   <script>
+      "use strict"
+
+      function getTable() {
+         const tableGenerator = document.querySelector(".table-generator")
+         const column = document.getElementById("column").value
+         const row = document.getElementById("row").value
+
+         let table = document.createElement("table")
+         tableGenerator.appendChild(table)
+         for (let r = 0; r < row; r++) {
+            let tr = document.createElement("tr")
+            table.appendChild(tr)
+            for (let c = 0; c < column; c++) {
+               let random = 1 + Math.floor(Math.random() * (1 + 10 - 1))
+               let td = document.createElement("td")
+               tr.appendChild(td)
+               td.innerText = random
+            }
+
+         }
+      }
+      document.getElementById("generate").onclick = getTable
+      
+   </script>
+</body>
+
+</html>
