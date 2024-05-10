@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Рішення задачі №2</title>
+   <!-- <link rel="stylesheet" href="css/style.css"> -->
+</head>
+
+<body>
+   <h1>Рішення задачі №2</h1>
+   <p>
+      Дано 5 елементів input. При введенні значення у якийсь із них необхідно автоматично заповнювати інші (усі попередні у спадному порядку(кожен
+      попередній має значення на 1 менше за наступний), усі наступні на 1 більше (кожен наступне на 1 більше за попереднього)
+   </p>
+
+   <main class="page">
+      <section class="page__input">
+         <div>
+            <label for="inp">Value 1</label>
+            <input type="number" class="input" id="inp">
+         </div>
+
+         <div>
+            <label for="inp2">Value 2</label>
+            <input type="number" class="input" id="inp2">
+         </div>
+
+         <div>
+            <label for="inp3">Value 3</label>
+            <input type="number" class="input" id="inp3">
+         </div>
+
+         <div>
+            <label for="inp4">Value 4</label>
+            <input type="number" class="input" id="inp4">
+         </div>
+
+         <div>
+            <label for="inp5">Value 5</label>
+            <input type="number" class="input" id="inp5">
+         </div>
+
+      </section>
+   </main>
+   <script>
+      "use strict"
+
+      function vlueInput() {
+         // let input = event.target // el event
+         const thisInput = this
+         let input = thisInput
+         let val = parseInt(input.value) //value
+         let inputParent = input.parentElement //div
+
+         while (inputParent.previousElementSibling !== null) {
+            inputParent = inputParent.previousElementSibling
+            let children = inputParent.children // div el collection
+            for (const child of children) {
+               if (child.tagName === "INPUT") child.value = --val
+            }
+         }
+
+         while (inputParent.nextElementSibling !== null) {
+            inputParent = inputParent.nextElementSibling
+            let children = inputParent.children
+            for (const child of children) {
+               if (child.tagName === "INPUT") child.value = ++val
+            }
+         }
+      }
+
+      const inputs = document.querySelectorAll("input")
+      for (const input of inputs) {
+         input.onkeyup = vlueInput
+      }
+   </script>
+</body>
+
+</html>

@@ -1,0 +1,284 @@
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+html,
+body {
+  line-height: 1;
+  height: 100%;
+}
+
+.wrapper {
+  overflow: clip;
+  min-height: 100%;
+}
+
+a {
+  display: inline-block;
+}
+
+/* FORM */
+input,
+button,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+button {
+  color: inherit;
+  background-color: transparent;
+}
+
+button,
+select,
+option {
+  cursor: pointer;
+}
+
+input[type=text],
+input[type=email],
+input[type=tel],
+textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+address {
+  font-style: normal;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.random-list-program-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+}
+
+.random-list-program {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 50px;
+  background-color: rgba(128, 128, 128, 0.445);
+  border-radius: 10px;
+  padding: 30px 20px;
+}
+.random-list-program ol li {
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 4px 5px;
+  font-weight: bolder;
+  font-size: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 20px;
+}
+.random-list-program ol li:not(:last-child) {
+  margin-bottom: 5px;
+}
+.random-list-program ol li span {
+  font-weight: normal;
+  font-size: 16px;
+}
+.random-list-program button {
+  background-color: #a3b486;
+  -ms-flex-item-align: center;
+      align-self: center;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: bolder;
+  color: #2c3e28;
+}
+.random-list-program button:hover {
+  background-color: #a5cb62;
+}
+
+.table-prog {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 20px;
+  padding: 30px 15px;
+}
+.table-prog table {
+  font-size: 20px;
+}
+.table-prog table td {
+  padding: 10px;
+  border: 1px solid black;
+  text-align: center;
+  cursor: pointer;
+}
+
+.product-card__container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 50px 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 20px;
+}
+
+.card {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  max-width: 300px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 15px;
+  border: 1px solid rgba(128, 128, 128, 0.262);
+  padding: 15px 5px;
+}
+.card.active {
+  border: 1px solid rgba(26, 173, 63, 0.678);
+}
+.card__header {
+  padding: 5px;
+  font-size: 16px;
+}
+.card__rating {
+  background-color: orange;
+  display: inline-block;
+  padding: 3px 15px;
+  border-radius: 15px;
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: 600;
+}
+.card__body img {
+  width: 100%;
+}
+.card__title {
+  padding: 5px;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  line-height: 1.27;
+}
+.card__price {
+  color: red;
+  font-size: 20px;
+  padding: 5px;
+}
+
+.athlete-list__container {
+  max-width: 1230px;
+  padding: 15px;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 50px;
+}
+.athlete-list__active, .athlete-list__chosen {
+  border: 1px solid black;
+  border-radius: 15px;
+  background-color: rgba(163, 180, 134, 0.3568627451);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 10px;
+  min-width: 280px;
+  padding: 10px;
+}
+.athlete-list__active div, .athlete-list__chosen div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 20px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  cursor: pointer;
+  border: 1px solid rgba(32, 76, 53, 0.158);
+  border-radius: 15px;
+  padding: 5px 10px;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.athlete-list__active div:hover, .athlete-list__chosen div:hover {
+  border-color: rgba(32, 76, 53, 0.708);
+}
+.athlete-list__active div span, .athlete-list__chosen div span {
+  font-size: 14px;
+  color: green;
+}
+.athlete-list__active .active, .athlete-list__chosen .active {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
+.athlete-list__active .active span, .athlete-list__chosen .active span {
+  font-size: 14px;
+  -webkit-transform: scale(-1);
+      -ms-transform: scale(-1);
+          transform: scale(-1);
+  color: red;
+}
+
+.snowfall {
+  position: relative;
+  width: 100%;
+}
+.snowfall span {
+  position: absolute;
+}
