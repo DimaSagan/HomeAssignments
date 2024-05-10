@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Рішення задачі №6</title>
+</head>
+
+<body>
+   <h1>Рішення задачі №6</h1>
+   <p>
+
+   </p>
+   <script>
+      "use strict"
+
+      class MultChecker {
+         constructor(minNum, maxNum) {
+            this.firstNum = this.getRandom(minNum, maxNum)
+            this.secondNum = this.getRandom(minNum, maxNum)
+            this.res = this.getREsult()
+         }
+         getRandom(minNum, maxNum) {
+            let res = minNum + Math.floor(Math.random() * (maxNum + minNum - minNum))
+            return res
+         }
+         getREsult() {
+            let res = this.firstNum * this.secondNum
+            return res
+         }
+         checker(val) {
+            let res = this.getREsult()
+            let answer
+            if (res === val) {
+               answer = val
+            } else answer = res
+            return answer
+         }
+         start() {
+            let answer = parseFloat(prompt(`${this.firstNum} * ${this.secondNum} = ?`))
+            return { firstNum: this.firstNum, secondNum: this.secondNum, operation: "*", userAnswer: answer, correctAnswer: this.checker(answer) }
+         }
+         toString() {
+            return `Правельна відповідь: ${this.res} `
+         }
+      }
+      class AddChecker {
+         constructor(minNum, maxNum) {
+            this.firstNum = this.getRandom(minNum, maxNum)
+            this.secondNum = this.getRandom(minNum, maxNum)
+            this.res = this.getREsult()
+         }
+         getRandom(minNum, maxNum) {
+            let res = minNum + Math.floor(Math.random() * (maxNum + minNum - minNum))
+            return res
+         }
+         getREsult() {
+            let res = this.firstNum + this.secondNum
+            return res
+         }
+         checker(val) {
+            let res = this.getREsult()
+            let answer
+            if (res === val) {
+               answer = val
+            } else answer = res
+            return answer
+         }
+         start() {
+            let answer = parseFloat(prompt(`${this.firstNum} + ${this.secondNum} = ?`))
+            return { firstNum: this.firstNum, secondNum: this.secondNum, operation: "+", userAnswer: answer, correctAnswer: this.checker(answer) }
+
+         }
+         toString() {
+            return `Правельна відповідь: ${this.res} `
+         }
+      }
+
+      class Hystory {
+         constructor() {
+            this.testList = []
+         }
+         pushData(val) {
+            this.testList.push(val)
+         }
+         print() {
+            let i = 1
+            for (const test of this.testList) {
+               document.write(`${i})`)
+               for (const key in test) {
+                  document.write(` ${key}: ${test[key]}`)
+               }
+               document.write(`<hr><br>`)
+               i++
+            }
+            console.log(this.testList)
+         }
+         toString() {
+            return this.testList
+         }
+      }
+
+      class TestManager {
+         static testManagerSingle
+         constructor(taskNum, time, multCheckerMin = 2, multCheckerMax = 9, addCheckerMin = 1, addCheckerMax = 50) {
+            this.taskNum = taskNum
+            this.multCheckerMin = multCheckerMin
+            this.multCheckerMax = multCheckerMax
+            this.addCheckerMin = addCheckerMin
+            this.addCheckerMax = addCheckerMax
+
+            if (TestManager.testManagerSingle) {
+               return TestManager.testManagerSingle
+            } else {
+               this.time = time * 1000
+               this.history = new Hystory()
+               setTimeout(() => {
+                  this.timer()
+               }, this.time)
+            }
+            TestManager.testManagerSingle = this
+         }
+         timer() {
+            if (this.taskNum > 0) {
+               let numRandomTask = 1 + Math.floor(Math.random() * 2)
+               let res = this.randomTask(numRandomTask)
+               this.history.pushData(res)
+               this.taskNum--
+               if (this.taskNum === 0) {
+                  this.history.print()
+               } else {
+                  setTimeout(() => this.timer(), this.time)
+               }
+            }
+         }
+         randomTask(numRandomTask) {
+            let res
+            if (numRandomTask === 1) res = new MultChecker(this.multCheckerMin, this.multCheckerMax).start()
+            if (numRandomTask === 2) res = new AddChecker(this.addCheckerMin, this.addCheckerMax).start()
+            return res
+         }
+
+      }
+      new TestManager(4, 1)
+      new TestManager(8, 1)
+
+   </script>
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Рішення задачі №6</title>
+   <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+   <h1>Рішення задачі №6</h1>
+   <p>
+      Дано список спортсменів. Потрібно сформувати список тих, які будуть брати участь у змаганні. При цьому є два стовпці. В одному відображені всі
+      спортсмени, в іншому – список тих, хто був вибраний. При натисканні на зелену стрілку спортсмен переміщається у список для змагань. При
+      натисканні на червону стрілку спортсмен переміщається у загальний список.
+   </p>
+
+   <section class="athlete-list">
+      <div class="athlete-list__container">
+         <div class="athlete-list__active">
+
+         </div>
+
+         <div class="athlete-list__chosen">
+
+         </div>
+      </div>
+
+   </section>
+   <script>
+      "use strict"
+
+      function render(arr) {
+         const activeList = document.querySelector(".athlete-list__active")
+         for (const athlete of arr) {
+            let div = document.createElement("div")
+            let arrow = document.createElement("span")
+            div.innerText = athlete
+            arrow.innerText = "⮕"
+            div.append(arrow)
+            activeList.append(div)
+         }
+      }
+
+      function pickUpAthlete(event) {
+         let thisEl = event.target
+         if (thisEl.tagName === "SPAN" && thisEl.parentElement.className !== "active") {
+            document.querySelector(".athlete-list__chosen").append(thisEl.parentElement)
+            thisEl.parentElement.className = "active"
+         }
+         else if (thisEl.tagName === "SPAN" && thisEl.parentElement.classList.contains("active")) {
+            document.querySelector(".athlete-list__active").append(thisEl.parentElement)
+            thisEl.parentElement.classList.remove("active")
+         }
+      }
+
+      const athletesNames = [
+         "John Smith",
+         "Emma Johnson",
+         "Michael Brown",
+         "Emily Davis",
+         "David Wilson",
+         "Olivia Taylor",
+         "James Martinez",
+         "Sophia Anderson",
+         "Matthew Thompson",
+         "Ava Harris"
+      ]
+
+      render(athletesNames)
+      document.querySelector(".athlete-list__active").onclick = pickUpAthlete
+      document.querySelector(".athlete-list__chosen").onclick = pickUpAthlete
+   </script>
+</body>
+
+</html>

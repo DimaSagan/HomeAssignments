@@ -86,14 +86,15 @@
          const numberOfGrades = document.querySelector(".number-of-grades").value
 
          // const tableBody = document.querySelector(".get-table__body")
-         for (let i = 0; i < numberOfGrades; i++) {
-            const input = document.createElement("input")
-            input.setAttribute("type", "number")
-            input.setAttribute("placeholder", `${i + 1}) Введіть оцінку`)
-            input.classList.add("grade")
-            tableBody.append(input)
+         if(numberOfGrades !== null){
+            for (let i = 0; i < numberOfGrades; i++) {
+               const input = document.createElement("input")
+               input.setAttribute("type", "number")
+               input.setAttribute("placeholder", `${i + 1}) Введіть оцінку`)
+               input.classList.add("grade")
+               tableBody.append(input)
+            }
          }
-
       }
       function getSum() {
          const grades = document.querySelectorAll(".grade")

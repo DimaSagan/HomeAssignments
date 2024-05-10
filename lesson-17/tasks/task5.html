@@ -10,51 +10,240 @@
 <body>
    <h1>Рішення задачі №5</h1>
    <p>
-      Розробити клас «Керівник танців»
+      Особиста бібліотека. Картотека домашньої бібліотеки: дані книги (автори (піб, рік народження, короткий опис), назва книги, жанр, видавництво
+      (назва, реєстраційний номер, рік засування)). Реалізувати розділи бібліотеки (спеціальна література, хобі, домашнє господарство і т.д.),
+      походження книги і наявність на даний час. Організувати додавання/вилучення книг та вибір книг за назвою, за ПІБ автора, за видавництвом.
    </p>
    <script>
       "use strict"
 
-      class DanceDirector {
-         constructor(male, female) {
-            this.male = male.slice()
-            this.female = female.slice()
+      class Author {
+         #authorName
+         get AuthorName() {
+            return this.#authorName
          }
-         // Метод випадкового вибору імені хлопця
-         getRandomMale = function () {
-            let randomMale = Math.floor(Math.random() * this.male.length)
-            let maleName = this.male[randomMale]
-            this.male.splice(randomMale, 1)
-            return maleName
+         set AuthorName(val) {
+            if (val.length === 0 || !isNaN(val)) throw new Error("Не коректний ПІБ автора")
+            this.#authorName = val
          }
-         // Метод випадкового вибору імені дівчини
-         getRandomFemale = function () {
-            let randomFemale = Math.floor(Math.random() * this.female.length)
-            let femaleName = this.female[randomFemale]
-            this.female.splice(randomFemale, 1)
-            return femaleName
-         }
-         // Метод виведення пари для танців
-         startDance = function () {
-            document.write(`${this.getRandomFemale()} + ${this.getRandomMale()}<br>`)
-         }
-         // Метод run , який ініціює через кожні 5 секунд виведення нової пари для танців
-         run = function () {
-            let interval = setInterval(() => {
-               if (this.male.length === 0 || this.female.length === 0)
-                  clearInterval(interval)
-               else this.startDance()
-            }, 5000)
 
+         #birthYear
+         get BirthYear() {
+            return this.#birthYear
+         }
+         set BirthYear(val) {
+            if (isNaN(val) || val === 0) throw new Error("Введіть рік Народження автора")
+            this.#birthYear = val
+         }
+
+         #description
+         get Description() {
+            return this.#description
+         }
+         set Description(val) {
+            if (val.length > 300) {
+               throw new Error("Занадто довгий опис")
+            } else if (val.length === 0) throw new Error("Не вистачає опису")
+
+            this.#description = val
+         }
+
+         constructor(authorName, birthYear, description) {
+            this.AuthorName = authorName
+            this.BirthYear = birthYear
+            this.Description = description
+         }
+
+         toString() {
+            return `Ім'я автора: ${this.AuthorName}<br> Рік народження: ${this.BirthYear}<br> Коротнкий опис: ${this.Description}<br>`
          }
       }
 
-      let dancePairs = [
-         ["Alexander", "John", "Michael", "William", "James", "David", "Robert", "Joseph", "Christopher", "Daniel"],
-         ["Emily", "Emma", "Olivia", "Sophia", "Ava", "Isabella", "Mia", "Amelia", "Harper", "Evelyn"]
+
+      class PublishingHouse {
+         #title
+         get Title() {
+            return this.#title
+         }
+         set Title(val) {
+            if (val == undefined || val.length === 0) throw new Error("Введіть назву видавнитства")
+            this.#title = val
+         }
+
+         #registrationNumber
+         get RegistrationNumber() {
+            return this.#registrationNumber
+         }
+         set RegistrationNumber(val) {
+            if (val == undefined || val.length === 0) throw new Error("Введіть реєстраційний номер видавнитства")
+            this.#registrationNumber = val
+         }
+         #foundationYear
+         get FoundationYear() {
+            return this.#foundationYear
+         }
+         set FoundationYear(val) {
+            if (val == undefined || val.length === 0) throw new Error("Введіть рік заснування")
+            this.#foundationYear = val
+         }
+
+         constructor(title, registrationNumber, foundationYear) {
+            this.Title = title
+            this.RegistrationNumber = registrationNumber
+            this.FoundationYear = foundationYear
+         }
+
+         toString() {
+            return `Назва видавнитства: ${this.Title}<br> Реєстраційний номер видавнитства: ${this.RegistrationNumber}<br> Рік заснування: ${this.FoundationYear}<hr>`
+         }
+      }
+
+      class Book {
+         #bookTitle
+         get BookTitle() {
+            return this.#bookTitle
+         }
+         set BookTitle(val) {
+            if (val === undefined) throw new Error("Введіть назву книги")
+            this.#bookTitle = val
+         }
+
+         #genre
+         get Genre() {
+            return this.#genre
+         }
+         set Genre(val) {
+            if (val === undefined || !isNaN(val)) throw new Error("Введіть жанр кникги")
+            this.#genre = val
+         }
+
+         constructor(
+            authorName, birthYear, description,
+            bookTitle, bookGenre,
+            title, registrationNumber, foundationYear
+         ) {
+            this.author = new Author(authorName, birthYear, description)
+            this.BookTitle = bookTitle
+            this.Genre = bookGenre
+            this.publishingHouse = new PublishingHouse(title, registrationNumber, foundationYear)
+         }
+
+         toString() {
+            return `${this.author}<br> Назва книги: ${this.BookTitle}<br> Жанр: ${this.Genre}<br> ${this.publishingHouse}<br>`
+         }
+      }
+
+
+      class Library {
+
+         static specialLiterature
+         static drama 
+
+         constructor(bookList = []) {
+            this.bookList = bookList
+            console.log(this.bookList)
+         }
+
+         toString() {
+            return `${this.bookList}`
+         }
+
+         addBook(
+            authorName, birthYear, description,
+            bookTitle, bookGenre,
+            title, registrationNumber, foundationYear
+         ) {
+            let newBook = new Book(authorName, birthYear, description, bookTitle, bookGenre, title, registrationNumber, foundationYear)
+            this.bookList.push(newBook)
+         }
+
+         removeBook(val) {
+            let findBook = this.bookList.findIndex((el) => el.BookTitle === val)
+            this.bookList.splice(findBook, 1)
+         }
+
+         findByTitle(val) {
+            let findTitle = this.bookList.findIndex((el) => el.BookTitle === val)
+            document.write(`Результат пошуку по назві: <br> ${this.bookList[findTitle]}`)
+         }
+
+         findByAuthor(val) {
+            let findAuthor = this.bookList.filter((el) => el.author.AuthorName === val)
+            document.write(`Результат пошуку по автору: <br> ${findAuthor}`)
+         }
+
+         findByPublishingHouse(val) {
+            let findPublishingHouse = this.bookList.filter((el) => el.publishingHouse.Title === val)
+            document.write(`Результат пошуку по видавництву: <br> ${findPublishingHouse}`)
+         }
+
+         get specialLiterature() {
+            this.loadSection()
+            return Library.specialLiterature
+         }
+         get drama() {
+            this.loadSection()
+            return Library.drama
+         }
+
+         loadSection() {
+            Library.specialLiterature = [] 
+            Library.drama = []
+         for(const book of this.bookList) {
+            if (book.Genre === "спеціальна література") {
+               Library.specialLiterature.push(book)
+            }
+            if (book.Genre === "Драма") {
+               Library.drama.push(book)
+            } 
+         }
+      }
+      
+      }
+
+      let test = [
+         new Book(
+            "Іван Іванов", 1970, "Супер скриптер",
+            "JS для чайників", "спеціальна література",
+            "Промінь", 3342443322, 1991
+         ),
+         new Book(
+            "Іван Іванов", 1970, "Супер скриптер",
+            "JS для чайників: частина 2", "спеціальна література",
+            "Промінь", 3342443322, 1991
+         ),
+         new Book(
+            "Євген Бурда", 1970, "Сооавтор HTML-5",
+            "Основи HTML програмування", "спеціальна література",
+            "Промінь", 3342443322, 1991
+         ),
       ]
-      let dance = new DanceDirector(dancePairs[0], dancePairs[1])
-      dance.run()
+
+      let library = new Library(test)
+
+      library.addBook(
+         "Леся Українка", 1871, "Велика українська письменниця",
+         "Лісова пісня", "Драма",
+         "Соняшник", 1234567890, 1999
+      )
+      library.addBook(
+         "Іван Котляревський", 1769, "Видатний український драматург",
+         "Наталка Полтавка", "Драма",
+         "Соняшник", 1234567890, 1999
+      );
+      library.addBook(
+         "Михайло Старицький", 1840, "Класик української драматургії",
+         "Мартин Боруля", "Драма",
+         "Соняшник", 1234567890, 1999
+      );
+
+      // library.removeBook("JS для чайників: частина 2")
+      // library.findByTitle("Основи HTML програмування")
+      // library.findByAuthor("Михайло Старицький")
+      // library.findByPublishingHouse("Соняшник")
+      // document.write(library)
+      document.write(library.specialLiterature)
+      document.write(library.drama)
    </script>
 </body>
 
