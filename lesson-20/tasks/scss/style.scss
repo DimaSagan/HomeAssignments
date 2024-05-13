@@ -1,214 +1,74 @@
 @import "_reset";
 
-.random-list-program-wrapper{
-    display: flex;
-    align-items: center;
-    height: 100%;
-}
-
-.random-list-program {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    gap: 50px;
-    background-color: rgba(128, 128, 128, 0.445);
-    border-radius: 10px;
-    padding: 30px 20px;
-    ol {
-        li {
-            border: 1px solid black;
-            border-radius: 10px;
-            padding: 4px 5px;
-            font-weight: bolder;
-            font-size: 20px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            &:not(:last-child) {
-                margin-bottom: 5px;
-            }
-            span {
-                font-weight: normal;
-                font-size: 16px;
-            }
-        }
-    }
-
-    button{
-        background-color: #a3b486;
-        align-self: center;
-        padding: 10px 20px;
-        border-radius: 10px;
-        font-weight: bolder;
-        color: #2c3e28;
-        &:hover{
-            background-color: #a5cb62; 
-        }
-    }
-}
-
-
-.table-prog{
-    display: flex;
-    gap: 20px;
-    padding: 30px 15px;
-    table{
-        font-size: 20px;
-        td{
-            padding: 10px;
-            border: 1px solid black;
-            text-align: center;
-            cursor: pointer;
-        }
-    }
-}
-
-.product-card {
-
-    // .product-card__container
+.car-filter {
+    padding-top: 50px;
 
     &__container {
-        max-width: 1280px;
+        max-width: 1200px;
         margin: 0 auto;
-        padding: 50px 15px;
-        display: flex;
-        gap: 20px;
+        background-color: rgb(234, 232, 231);
+        padding: 50px 0;
+        border-radius: 0 25px 0 25px;
     }
-
-    // .product-card__card
-
-    
-}
-.card {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    max-width: 300px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    border: 1px solid rgba(128, 128, 128, 0.262);
-    padding: 15px 5px;
-
-    &.active{
-        border: 1px solid rgba(26, 173, 63, 0.678);
-    }
-    // .card__header
 
     &__header {
-        padding: 5px;
-        font-size: 16px;
-    }
-
-    // .card__rating
-
-    &__rating {
-        background-color: orange;
-        display: inline-block;
-        padding: 3px 15px;
-        border-radius: 15px;
-        text-transform: uppercase;
-        color: #fff;
-        
-        font-weight: 600;
-    }
-
-    // .card__body
-
-    &__body {
-        img{
-           width: 100%;
+        // border: 1px solid blue;
+        display: flex;
+        justify-content: center;
+        gap: 50px;
+        &:not(:last-child) {
+            margin-bottom: 20px;
         }
     }
 
-    // .card__footer
-
-   
-
-    // .card__title
-
-    &__title {
-        padding: 5px;
-        font-size: 15px;
-        letter-spacing: 0.5px;
-        line-height: 1.27;
-    }
-
-    // .card__price
-
-    &__price {
-        color: red;
+    &__arrow {
+        position: absolute;
+        top: center;
+        right: 15px;
+        pointer-events: none;
         font-size: 20px;
-        padding: 5px;
-
     }
-}
-
-.athlete-list {
-
-    // .athlete-list__container
-
-    &__container {
-        max-width: 1230px;
-        padding: 15px;
-        margin: 0 auto;
+    &__select-wrapper {
         display: flex;
-        gap: 50px;
+        align-items: center;
+        gap: 30px;
+        position: relative;
+        label {
+            font-size: 20px;
+        }
+
+        select {
+            padding: 10px 20px;
+            border: 1px solid rgb(159, 155, 155);
+            width: 300px;
+            color: grey;
+            border-radius: 15px;
+            appearance: none;
+        }
     }
+    &__result {
+        // border: 5px solid rgb(255, 0, 0);
+        width: 100%;
 
-    // .athlete-list__active
-
-    &__active,
-    &__chosen {
-        border: 1px solid black;
-        border-radius: 15px;
-        background-color: #a3b4865b;
+        background-color: rgb(137, 137, 137);
         display: flex;
         flex-direction: column;
-        gap: 10px;
-        min-width: 280px;
-        padding: 10px;
-        
-
-        div{
+        // gap: 10px;
+        div {
             display: flex;
-            align-items: center;
-            font-size: 20px;
-            justify-content: space-between;
-            cursor: pointer;
-            border: 1px solid rgba(32, 76, 53, 0.158);
-            border-radius: 15px;
-            padding: 5px 10px;
-            transition: all 0.5s;
-            &:hover{
-                border-color: rgba(32, 76, 53, 0.708);;
-            }
-            span{
-                font-size: 14px; 
-                color: green;
-            }
+            column-gap: 10px;
+            padding: 0 50px;
+            // padding-bottom: 3px;
+            border-bottom: 1px solid rgb(202, 202, 202);
+            span {
+                color: #fff;
+                padding: 5px 5px 5px 25px;
+                font-size: 18px;
+                display: inline-block;
+                background-color: rgb(114, 114, 114);
+                flex-basis: 33.333%;
 
-        }
-
-        .active{
-            flex-direction: row-reverse;
-            span{
-                font-size: 14px; 
-                transform: scale(-1);
-                color: red;
             }
         }
-
-    }
-
-    
-}
-
-
-.snowfall{
-    position: relative;
-    width: 100%;
-    // min-height: 100%;
-    span{
-        position: absolute;
     }
 }
-
