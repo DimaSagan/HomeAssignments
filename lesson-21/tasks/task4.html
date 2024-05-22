@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Рішення задачі №4</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- <p>
+    Користувач задає місяць навчання учня (перевіряти чи є числом, чи від 1 до 12, чи не канікули) та оцінку (перевіряти чи є
+    числом, чи від 1 до 100). Вивести чи зможе він виправити оцінку (якщо оцінка погана і це не останній місяць у семестрі) . Обробку усіх помилок
+    зробити з використанням відповідних класів.
+  </p>
+  <hr> -->
+
+
+  <main class="page">
+    <section class="grade-checker"></section>
+  </main>
+  <script>
+    "use strict"
+
+    class IsVacationError extends Error {
+      constructor() {
+        super()
+        this.message = "В цьому місяці канікули"
+        this.name = "IsVacationError"
+      }
+    }
+    class IsMonthNumError extends Error {
+      constructor() {
+        super()
+        this.message = "Не вірно введені данні"
+        this.name = "IsVacationError"
+      }
+    }
+    class IsGradeError extends Error {
+      constructor() {
+        super()
+        this.message = "Не вірно введені данні"
+        this.name = "IsNotNumderError"
+      }
+    }
+    class GradeChecker {
+      constructor(containerName) {
+        this.el = this.render(containerName)
+      }
+      createTitle() {
+        const title = document.createElement("h2")
+        title.innerText = "Введіть оцінку для перевірки:"
+        return title
+      }
+      createInput(id, ladelText) {
+        const wrapper = document.createElement("div")
+        wrapper.className = "grade-checker__wrapper"
+        const label = document.createElement("label")
+        label.setAttribute("for", `${id}`)
+        label.innerText = ladelText
+        const input = document.createElement("input")
+        input.setAttribute("id", `${id}`)
+        wrapper.append(...[label, input])
+        return wrapper
+      }
+
+      createButton(id, innerText) {
+        const button = document.createElement("button")
+        button.setAttribute("id", `${id}`)
+        button.innerText = innerText
+        return button
+      }
+      validate() {
+        try {
+          const month = parseFloat(document.querySelector("#month").value)
+          const grade = parseFloat(document.querySelector("#grade").value)
+          this.month = month
+          this.grade = grade
+          if (isNaN(month) || month < 1 || month > 12) throw new IsMonthNumError()
+          if (month === 6 || month === 7 || month === 8) throw new IsVacationError()
+          if (isNaN(grade) || grade < 1 || grade > 100) throw new IsGradeError()
+        } catch (err) {
+          if (err instanceof IsMonthNumError) {
+            month.style.border = "1px solid red"
+            month.classList.add("error")
+            console.log(err.message)
+          }
+          else if (err instanceof IsGradeError) {
+            grade.style.border = "1px solid red"
+            grade.classList.add("error")
+          }
+          else if (err instanceof IsVacationError) {
+            month.style.border = "1px solid green"
+            month.classList.add("vacation")
+          }
+          return false
+        }
+        return true
+      }
+
+      clearError(event) {
+        let el = event.target
+        const classList = ["error", "vacation"]
+        classList.forEach(classValue => {
+          if (el.classList.contains(classValue)) {
+            el.classList.remove(classValue)
+          }
+        });
+        el.removeAttribute("style")
+        let res = document.querySelector(".grade-checker__result")
+        if (res) {
+          res.remove()
+        }
+        console.log(el)
+      }
+      check() {
+        if (document.querySelector(".grade-checker__result")) {
+          return
+        }
+        this.grade = 0
+        this.month = 0
+        if (this.validate()) {
+          this.result = document.createElement("div")
+          this.result.className = "grade-checker__result"
+          const paragraph = document.createElement("p")
+
+          if (this.grade < 70 && (this.month !== 12 && this.month !== 5)) {
+            paragraph.innerText = "Ви втсигаєте виправити свою оцінку"
+            console.log(paragraph)
+          }
+          else if (this.grade < 70 && (this.month === 12 || this.month === 5)) {
+            paragraph.innerText = `Ви не втсигаєте виправити свою оцінку`
+            console.log(paragraph)
+          }
+          else paragraph.innerText = "Ви маєте задовільну оцінку"
+
+          this.result.append(paragraph)
+          document.querySelector(".grade-checker__container").append(this.result)
+        }
+
+      }
+
+      render(containerName) {
+        const container = document.createElement("div")
+        container.className = "grade-checker__container"
+        document.querySelector(containerName).append(container)
+        container.append(this.createTitle())
+        container.append(this.createInput("month", "Введіть місяць : "))
+        container.append(this.createInput("grade", "Введіть оцінку : "))
+        container.append(this.createButton("start", "Виконати перевірку"))
+        let res = document.querySelector(".grade-checker__result")
+
+        start.onclick = this.check.bind(this)
+
+
+        // container.append(this.result)
+
+        // month.onchange = this.clearError.bind(this)
+        document.querySelector(".grade-checker__container").addEventListener("change", (e) => {
+          this.clearError(e)
+        })
+        return container
+      }
+    }
+
+    let test = new GradeChecker(".grade-checker")
+
+  </script>
+</body>
+
+</html>

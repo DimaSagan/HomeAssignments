@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Рішення задачі №3</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  
+  <p>
+
+  </p>
+
+
+  <main class="page">
+    <section class="page__animation animation"></section>
+  </main>
+  <script>
+    "use strict"
+
+    class ImageConstructor {
+      constructor(coordinateX, coordinateY, imgPath, updateInterval, containerName) {
+        this.coordinateX = coordinateX
+        this.coordinateY = coordinateY
+        this.imgPath = imgPath
+        this.updateInterval = updateInterval
+
+        this.currentScale = 1
+        this.currentCoordinateX = coordinateX
+        this.currentCoordinateY = coordinateY
+
+        this.el = this.render(containerName)
+      }
+      scaleChange(maxVal) {
+        const step = 0.001
+        this.currentScale = (this.currentScale < maxVal) ? this.currentScale + step : 1
+        this.updateTransform()
+      }
+
+      changeCoordinateX(maxVal = 100, defoldVal = this.coordinateX) {
+        const step = 0.1
+        this.currentCoordinateX = (this.currentCoordinateX < maxVal) ? this.currentCoordinateX + step : defoldVal
+        this.updateTransform()
+      }
+
+      changeCoordinateY(maxVal = 100, defoldVal = this.coordinateY) {
+        const step = 0.1
+        this.currentCoordinateY = (this.currentCoordinateY < maxVal) ? this.currentCoordinateY + step : defoldVal
+        this.updateTransform()
+      }
+
+      getRandom(min, max) {
+        let randomNum = min + Math.floor(Math.random() * max)
+        console.log(randomNum)
+        return randomNum
+      }
+
+      updateTransform() {
+        this.image.style.transform = `scale(${this.currentScale}) translate(${this.currentCoordinateX}%, ${this.currentCoordinateY}%)`
+      }
+      createImage() {
+        this.image = document.createElement("img")
+        this.image.style.transform = `scale(${this.currentScale}) translate(${this.coordinateX}%, ${this.coordinateY}%`
+        this.image.setAttribute("src", this.imgPath)
+        return this.image
+      }
+
+
+      render(containerName) {
+        const imageWrapper = document.createElement("div")
+        imageWrapper.className = "animation__wrapper"
+        imageWrapper.append(this.createImage())
+        document.querySelector(containerName).append(imageWrapper)
+        return imageWrapper
+      }
+    }
+
+    class House extends ImageConstructor {
+      constructor(coordinateX, coordinateY, imgPath, updateInterval, containerName) {
+        super(coordinateX, coordinateY, imgPath, updateInterval, containerName)
+        this.interval()
+      }
+      interval() {
+        setInterval(() => super.scaleChange(2), this.updateInterval)
+
+      }
+    }
+
+    class Dog extends ImageConstructor {
+      constructor(coordinateX, coordinateY, imgPath, updateInterval, containerName) {
+        super(coordinateX, coordinateY, imgPath, updateInterval, containerName)
+        this.interval()
+      }
+      interval() {
+        setInterval(() => super.changeCoordinateX(), this.updateInterval)
+
+      }
+    }
+
+    class Bird extends ImageConstructor {
+      constructor(coordinateX, coordinateY, imgPath, updateInterval, containerName) {
+        super(coordinateX, coordinateY, imgPath, updateInterval, containerName)
+        this.targetX = this.getRandom(1, 8)
+        this.targetY = this.getRandom(2, 5)
+        this.interval()
+      }
+
+      interval() {
+        setInterval(() => this.changeCoordinateY(this.targetY), this.updateInterval)
+        setInterval(() => this.changeCoordinateX(this.targetX), this.updateInterval)
+        setInterval(() => {
+          this.targetX = this.getRandom(1, 8)
+          this.targetY = this.getRandom(2, 5)
+        }, 7000)
+      }
+    }
+
+
+    let test = new House(0, 0, "img/house.webp", 20, ".animation")
+    let test2 = new Dog(-100, 0, "img/dog.jpeg", 10, ".animation")
+    let test3 = new Bird(1, 1, "img/bird.png", 20, ".animation")
+  </script>
+  
+</body>
+
+</html>

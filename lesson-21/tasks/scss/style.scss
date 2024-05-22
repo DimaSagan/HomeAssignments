@@ -1,0 +1,120 @@
+@import "_reset";
+
+.animation {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    justify-content: space-around;
+    height: 100vh;
+    &__wrapper {
+        position: relative;
+        max-width: 400px;
+      
+        overflow: hidden;
+        img {
+            object-fit: cover;
+            object-position: center;
+            width: 100%;
+        }
+    }
+   
+}
+
+.grade-checker{
+    padding: 50px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    background: rgb(227,185,146);
+background: linear-gradient(180deg, rgba(227,185,146,1) 0%, rgba(200,215,158,1) 35%, rgba(0,212,255,0) 100%);
+    h2{
+        font-size: 25px;
+        &:not(:last-child){
+        margin-bottom: 25px;
+        }
+    }
+    &__container{
+        width: 415px;
+        min-height: 350px;
+        background-color: rgba(255, 255, 255, 0.478);
+        padding: 50px 50px;
+        text-align: center;
+        border-radius: 30px;
+        box-shadow: 2px 2px 10px 2px rgba(0, 0, 0, 0.13);
+        button{
+            background-color: #fff;
+            border: 1px solid rgba(128, 128, 128, 0.657);
+            padding: 10px 20px;
+            border-radius: 15px;
+            transition: all 0.5s;
+            &:not(:last-child){
+            margin-bottom: 20px;
+            }
+            &:hover{
+                background-color: #7d7c7c;
+                color: #fff;
+            }
+        }
+    }
+
+    &__wrapper{
+        &:not(:last-child){
+        margin-bottom: 10px;
+        }
+        position : relative;
+        &::before{
+            content: "";
+            width: 100%;
+            height: 20px;
+            display: block;
+            color: red;
+            font-size: 15px;
+        }
+        &:has(.error#month){
+            &::before{
+                content: "Введіть місяць: 1-12";
+                width: 100%;
+                height: 20px;
+                display: inline-block;
+                padding-left: 80px;
+                color: red;
+                font-size: 15px;
+            }
+        }
+        &:has(.vacation#month){
+            &::before{
+                content: "Ковтни квасу, на вулиці спека";
+                width: 100%;
+                height: 20px;
+                display: inline-block;
+                padding-left: 80px;
+                color: green;
+                font-size: 15px;
+            }
+        }
+        &:has(.error#grade){
+            &::before{
+                content: "Введіть оцінку: 1-100";
+                width: 100%;
+                height: 20px;
+                display: inline-block;
+                padding-left: 80px;
+                color: red;
+                font-size: 15px;
+            }
+        }
+        input{
+            border: 1px solid rgba(128, 128, 128, 0.657);
+            border-radius: 15px;
+            padding: 2px 5px;
+            
+            
+        }
+        .error {
+                color: red;
+               
+            
+        }
+    }
+}

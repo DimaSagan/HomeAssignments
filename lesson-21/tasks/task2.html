@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Рішення задачі №2</title>
+  <!-- <link rel="stylesheet" href="css/style.css"> -->
+</head>
+
+<body>
+  <h1>Рішення задачі №2</h1>
+  <p>
+
+  </p>
+
+
+  <main class="page">
+
+  </main>
+  <script>
+    "use strict"
+
+    class Client {
+      #money
+      get Money() {
+        return this.#money
+      }
+      set Money(val) {
+        if (val < 0) throw new Error("Не коректна сума")
+        return this.#money = val
+      }
+      constructor(id, firstName, surName, moneyValue) {
+        this.id = id
+        this.firstName = firstName
+        this.surName = surName
+        this.Money = moneyValue
+        this.FullName
+      }
+      get FullName() {
+        return this.firstName + " " + this.surName
+      }
+      enteringCash(val) {
+        if (val < 1) throw new Error("Не коректна сума")
+        this.Money += val
+      }
+      withdrawalCash(val) {
+        if (this.moneyValue < val) throw new Error("Не достатньо грошей на рахунку")
+        this.Money -= val
+      }
+      toString() {
+        return `Id: ${this.id}<br>Client name: ${this.FullName}<br>Balance: ${this.Money}`
+      }
+
+    }
+
+    class GoldenClient extends Client {
+      #creditLimit
+      constructor(id, firstName, surName, moneyValue, creditLimit, creditPercent) {
+        super(id, firstName, surName, moneyValue)
+        this.creditLimit = creditLimit
+        this.StartCreditLimit = creditLimit
+        this.creditPercent = creditPercent
+      }
+      get StartCreditLimit() {
+        return this.#creditLimit
+      }
+      set StartCreditLimit(val) {
+        return this.#creditLimit = val
+      }
+      get TotalAmount() {
+        return this.Money + this.creditLimit
+      }
+      penalty() {
+        return (this.StartCreditLimit - this.creditLimit) * this.creditPercent / 100
+      }
+      withdrawalCash(val) {
+        if (this.TotalAmount < val) throw new Error("Не достатньо грошей на рахунку")
+        if (this.Money < val) {
+          let amountDifference = val - this.Money
+          this.Money = 0
+          this.creditLimit -= amountDifference
+        } else this.Money -= val;
+      }
+      toString() {
+        return `Id: ${this.id}<br> <br>Client name: ${this.FullName}<br>Balance: ${this.Money} <br>Credit balance: ${this.creditLimit} 
+            <br>Total balace ${this.TotalAmount}<br>Penalty: ${this.penalty()}`
+      }
+    }
+
+    class Bank {
+      constructor(clientList) {
+        this.clientList = clientList
+        console.log(this.clientList[0])
+      }
+
+      renderClient() {
+        let clients = this.clientList.filter(client => !(client instanceof GoldenClient))
+        let i =1
+        clients.forEach(client => {
+          document.write(`${i}) ${client.FullName}<br> Client status: regular<hr>`)
+          i++
+        });
+      }
+
+      renderGoldenClient(){
+        let clients = this.clientList.filter(client=> client instanceof GoldenClient)
+        let i =1
+        clients.forEach(client => {
+          document.write(`${i}) ${client.FullName}<br> Client status: gold<hr>`)
+          i++
+        });
+      }
+      bankTotalMoneyAmount(){
+        let tottalResult = this.clientList.reduce((prevTotal, client)=> prevTotal+= client.Money ,0)
+        document.write(`Total amount of money on the bank account - ${tottalResult}`)
+      }
+    }
+
+    let test = [
+      new Client(1000, "Ivan", "Ivanko", 2500),
+      new Client(1001, "Igor", "Tip", 3000),
+      new Client(1002, "Irina", "Bereza", 3500),
+      new GoldenClient(100, "Stepfan", "Rojers", 5000, 5000, 2),
+      new GoldenClient(101, "Taras", "Rivers", 6000, 5000, 2),
+      new GoldenClient(101, "Olga", "Horoshevo", 3000, 5000, 2)
+    ]
+
+    let bankTest = new Bank(test)
+    bankTest.renderClient()
+    bankTest.renderGoldenClient()
+    bankTest.bankTotalMoneyAmount()
+  </script>
+</body>
+
+</html>
