@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Рішення задачі №4</title>
+  <!-- <link rel="stylesheet" href="css/style.css"> -->
+</head>
+
+<body>
+
+   <p>
+    Дано дата виробництва йогурта (вводимо рік, місяць, день) та кількість днів придатності. Визначити чи є він придатним на даний момент.
+  </p>
+ 
+
+
+  <main class="page">
+  </main>
+  <script>
+    "use strict"
+    function productDate(){
+      let year = parseInt(prompt('Введіть рік', 2024))
+      let month = parseInt(prompt('Введіть місяць', 5)) -1
+      let day = parseInt(prompt('Введіть день місяця', 26))
+      let daysSuitability = parseInt(prompt('Введіть кількість днів придатності', 14))
+      let productionDate = new Date(year,month,day)
+      productionDate.setDate(productionDate.getDate()+daysSuitability)
+      return productionDate
+    }
+    function convertToDays(val){
+      let result = Math.floor(val/(3600000*24))
+      return result
+    }
+    function shelfLife(){
+      let productionDate = productDate()
+      let currentDate = new Date()
+      let dayDifference = convertToDays((productionDate - currentDate))
+      if(dayDifference>0){
+        document.write(`Продукт придатний ще ${dayDifference} днів.`)
+      }else if(dayDifference===0){
+        document.write(`Продукт придатний до кінця сьогоднішнього дня.`)
+      } else document.write(`Продукт не придатний вже ${Math.abs(dayDifference)} днів.`)
+    }
+
+    let test = shelfLife()
+    
+  </script>
+</body>
+
+</html>

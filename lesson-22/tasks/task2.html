@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Рішення задачі №2</title>
+  <!-- <link rel="stylesheet" href="css/style.css"> -->
+</head>
+
+<body>
+  <h1>Рішення задачі №2</h1>
+  <p>
+    Визначити скільки залишилось до кінця робочого дня (до 17.00)
+  </p>
+
+<style>
+  
+</style>
+  <main class="page">
+    <section class="end-of-day">
+      <div class="end-of-day__timer">
+        <span class="hour"></span>
+        <span class="min"></span>
+        <span class="sec"></span>
+      </div>
+      <h2 class="title" style="display: none;">Робочій день скінчився</h2>
+    </section>
+  </main>
+  <script>
+    "use strict"
+
+    
+    
+
+    document.addEventListener("DOMContentLoaded",()=>{
+      
+      function endOfDayTimer(){
+        
+        const currentDate = new Date()
+        const setEndOfDay =  new Date().setHours(17,0,0,0) 
+        let timeDifference = setEndOfDay - currentDate
+        let hour = Math.floor(timeDifference/3600000)
+        let min =  Math.floor((timeDifference%3600000)/60000)
+        let sec =   Math.floor((timeDifference%60000)/1000)
+        document.querySelector(".hour").innerText =  hour + " : "
+        document.querySelector(".min").innerText = min + " : "
+        document.querySelector(".sec").innerText = sec
+        
+        if(timeDifference<0){
+          document.querySelector(".end-of-day__timer").style.display="none"
+          document.querySelector(".title").style.display="block"
+        }
+      }
+      setInterval(endOfDayTimer,1000)
+    })
+    
+  </script>
+</body>
+
+</html>

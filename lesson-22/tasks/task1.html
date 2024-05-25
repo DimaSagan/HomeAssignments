@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Рішення задачі №1</title>
+
+</head>
+
+<body>
+
+   <div class="wrapper">
+      <header class="header">
+         Виводити на екран скільки хвилин користувач вже на сайті
+      </header>
+
+      <main class="page">
+         <section class="timer">
+            <span class="minutes"></span>
+            <span class="seconds"></span>
+         </section>
+      </main>
+      <footer></footer>
+   </div>
+
+   <script>
+      "use strict"
+      document.addEventListener("DOMContentLoaded", () => {
+         const startSession = new Date()
+         function updateTime() {
+            const currentTime = new Date()
+
+            const timeDifference = currentTime - startSession
+            
+            const minutes = Math.floor((timeDifference /3600000) / 60000)
+            // const seconds = Math.floor((timeDifference % 60000) / 1000)
+
+            document.querySelector(".minutes").innerText = minutes
+            // document.querySelector(".seconds").innerText = seconds
+         }
+         setInterval(updateTime, 1000)
+         updateTime()
+      })
+
+     
+
+   </script>
+
+</body>
+
+</html>
