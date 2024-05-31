@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ДЗ №23</title>
+    <script defer src="tasks/js/script.js"></script>
+    <style>
+        .result-fifteen,
+.result-sixteen,
+.result-seventeen{
+    min-height: 19px;
+}
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header class="wrapper__header header">
+            <h1>№ 23</h1>
+        </header>
+        <main class="wrapper__page page">
+            <section class="page__section section">
+                <h2>Задача 1</h2>
+                <p>Дано масив рядків. Вивести ті, у яких є цифри (використати метод test та регулярні вирази).</p>
+                <div class="section__result result-one"></div>
+            </section>
+
+            <section class="page__section section">
+                <h2>Задача 2</h2>
+                <p>Дано масив рядків. Вивести ті, у яких немає цифр.</p>
+                <div class="section__result result-two"></div>
+            </section>
+
+            <section class="page__section section">
+                <h2>Задача 3</h2>
+                <p>Дано масив рядків. Вивести ті, у яких є голосні літери.</p>
+                <div class="section__result result-three"></div>
+            </section>
+
+            <section class="page__section section">
+                <h2>Задача 4</h2>
+                <p>Дано масив рядків. Вивести ті, у яких немає голосних літер.</p>
+                <div class="section__result result-four"></div>
+            </section>
+
+            <section class="page__section section">
+                <h2>Задача 5</h2>
+                <p>Дано масив рядків. Вивести ті, у яких є або цифра 1 або цифра 3.</p>
+                <div class="section__result result-five"></div>
+            </section>
+
+            <section class="page__section section">
+                <h2>Задача 6</h2>
+                <p>Дано рядок тексту, вивести усі числа, які є у тексті</p>
+                <div class="section__result result-six"></div>
+            </section>
+
+            <section class="page__section section">
+                <h2>Задача 7</h2>
+                <p>Дано рядок тексту. Знайти усі знаки пунктуації, які були використано.</p>
+                <div class="section__result result-seven"></div>
+            </section>
+
+            <section class="page__section section">
+                <h2>Задача 8</h2>
+                <p>Дано рядок тексту. Вивести усі складові, які розділені розділовими знаками.</p>
+                <div class="section__result result-eight"></div>
+            </section>
+
+            <section class="page__section section">
+                <h2>Задача 9</h2>
+                <p>Дано рядок тексту. Перевірити, чи містить він дату у форматі dd.mm.yyyy (dd- день, mm- місяць, yyyy- рік).</p>
+                <div class="section__result result-nine"></div>
+            </section>
+
+            <section class="page__section section">
+                <h2>Задача 10</h2>
+                <p>Дано рядок тексту. Підрахувати кількість двоцифрових чисел у рядку.</p>
+                <div class="section__result result-ten"></div>
+            </section>
+
+            <section class="page__section section">
+                <h2>Задача 11</h2>
+                <p>Визначити чи може бути рядок тексту номером банківської картки (приклад: «4142-3433-2323-3434»). Знайти усі такі номери.</p>
+                <p class="ex">Lorem, ipsum dolor sit amet consectetur 4142-3433-2323-3434 adipisicing elit. Consectetur impedit eos odit enim sunt
+                    nisi explicabo.
+                    Incidunt 414T-3433-2323-3434 numquam excepturi non sunt. Accusamus cupiditate 4142-8888-5555-3434 eum blanditiis laboriosam unde
+                    cum 5142.3433.2323.3434 reiciendis. A?</p>
+                <div class="section__result result-eleven"></div>
+            </section>
+
+            <section class="page__section section">
+                <h2>Задача 12</h2>
+                <p>Дано адресу сайту. Визначити, чи є він урядовим (містить домен “gov”)</p>
+                <div class="section__result result-twelve"></div>
+            </section>
+            <section class="page__section section">
+                <h2>Задача 13</h2>
+                <p>Вибрати усі роки після 2021 року з отриманого повідомлення</p>
+                <div class="section__result result-thirteen"></div>
+            </section>
+
+            <section class="page__section section">
+                <h2>Задача 14</h2>
+                <p>Вибрати усі роки після 2021 року з отриманого повідомлення</p>
+                <div class="section__result result-fourteen"></div>
+            </section>
+
+            <section class="page__section section">
+                <h2>Задача 15</h2>
+                <p>Користувач вводить прізвище та ім’я в одному рядку через пробіл.  Замінити пробіл на дефіс.</p>
+                <input type="text" id="name" placeholder="Введіть ім’я">
+                <div class="section__result result-fifteen"></div>
+            </section>
+
+            <section class="page__section section">
+                <h2>Задача 16</h2>
+                <p>Користувач вводить дату у форматі «день.місяць.рік». Отримати рядкове представлення дати у форматі «день/місяць/рік»</p>
+                <input type="text" id="date" placeholder="Введіть дату">
+                <div class="section__result result-sixteen"></div>
+            </section>
+            <section class="page__section section">
+                <h2>Задача 17</h2>
+                <p> Користувач вводить день (номер дня (0-6) або «sun,mon,tue,wed,thu,fri,sat»). Визначити, чи  є це день вихідним</p>
+                <input type="text" id="day" placeholder="Введіть день">
+                <div class="section__result result-seventeen"></div>
+            </section>
+        </main>
+        <footer class="wrapper__footer footer"></footer>
+    </div>
+
+
+
+
+</body>
+
+</html>
