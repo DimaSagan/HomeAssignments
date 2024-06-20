@@ -1,0 +1,209 @@
+@charset "UTF-8";
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+html,
+body {
+  line-height: 1;
+  height: 100%;
+}
+
+.wrapper {
+  overflow: clip;
+  min-height: 100%;
+}
+
+a {
+  display: inline-block;
+}
+
+/* FORM */
+input,
+button,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+button {
+  color: inherit;
+  background-color: transparent;
+}
+
+button,
+select,
+option {
+  cursor: pointer;
+}
+
+input[type=text],
+input[type=email],
+input[type=tel],
+textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+address {
+  font-style: normal;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.animation {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 40px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  height: 100vh;
+}
+.animation__wrapper {
+  position: relative;
+  max-width: 400px;
+  overflow: hidden;
+}
+.animation__wrapper img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  width: 100%;
+}
+
+.grade-checker {
+  padding: 50px 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 50vh;
+  background: rgb(227, 185, 146);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgb(227, 185, 146)), color-stop(35%, rgb(200, 215, 158)), to(rgba(0, 212, 255, 0)));
+  background: linear-gradient(180deg, rgb(227, 185, 146) 0%, rgb(200, 215, 158) 35%, rgba(0, 212, 255, 0) 100%);
+}
+.grade-checker h2 {
+  font-size: 25px;
+}
+.grade-checker h2:not(:last-child) {
+  margin-bottom: 25px;
+}
+.grade-checker__container {
+  width: 415px;
+  min-height: 350px;
+  background-color: rgba(255, 255, 255, 0.478);
+  padding: 50px 50px;
+  text-align: center;
+  border-radius: 30px;
+  -webkit-box-shadow: 2px 2px 10px 2px rgba(0, 0, 0, 0.13);
+          box-shadow: 2px 2px 10px 2px rgba(0, 0, 0, 0.13);
+}
+.grade-checker__container button {
+  background-color: #fff;
+  border: 1px solid rgba(128, 128, 128, 0.657);
+  padding: 10px 20px;
+  border-radius: 15px;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.grade-checker__container button:not(:last-child) {
+  margin-bottom: 20px;
+}
+.grade-checker__container button:hover {
+  background-color: #7d7c7c;
+  color: #fff;
+}
+.grade-checker__wrapper {
+  position: relative;
+}
+.grade-checker__wrapper:not(:last-child) {
+  margin-bottom: 10px;
+}
+.grade-checker__wrapper::before {
+  content: "";
+  width: 100%;
+  height: 20px;
+  display: block;
+  color: red;
+  font-size: 15px;
+}
+.grade-checker__wrapper:has(.error#month)::before {
+  content: "Введіть місяць: 1-12";
+  width: 100%;
+  height: 20px;
+  display: inline-block;
+  padding-left: 80px;
+  color: red;
+  font-size: 15px;
+}
+.grade-checker__wrapper:has(.vacation#month)::before {
+  content: "Ковтни квасу, на вулиці спека";
+  width: 100%;
+  height: 20px;
+  display: inline-block;
+  padding-left: 80px;
+  color: green;
+  font-size: 15px;
+}
+.grade-checker__wrapper:has(.error#grade)::before {
+  content: "Введіть оцінку: 1-100";
+  width: 100%;
+  height: 20px;
+  display: inline-block;
+  padding-left: 80px;
+  color: red;
+  font-size: 15px;
+}
+.grade-checker__wrapper input {
+  border: 1px solid rgba(128, 128, 128, 0.657);
+  border-radius: 15px;
+  padding: 2px 5px;
+}
+.grade-checker__wrapper .error {
+  color: red;
+}
